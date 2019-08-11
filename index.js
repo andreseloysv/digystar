@@ -2,7 +2,8 @@ const http = require("http");
 fs = require("fs");
 
 const server = http.createServer((request, response) => {
-  fs.readFile("src/index.html", function(error, index) {
+  const indexFileName = getIndexByCountry();
+  fs.readFile(`src/${indexFileName}.html`, function(error, index) {
     if (error) {
       response.writeHead(404);
       response.write("Contents you are looking are Not Found");
@@ -13,6 +14,20 @@ const server = http.createServer((request, response) => {
     response.end();
   });
 });
+
+function getIndexByCountry(){
+      // request.coutry
+  const country = true;
+  if (country) {
+    return indexFileName = "indexGerman";
+  }else if (country)
+  {
+    return indexFileName = "indexSpanish";
+  }else if (country)
+  {
+    return indexFileName = "index";
+  }
+}
 
 const port = process.env.PORT || 1337;
 server.listen(port);
