@@ -99,6 +99,20 @@ const server = http.createServer((request, response) => {
     }
     response.end();
   });
+  saveRequestInfo(
+    userInformation.ip,
+    userInformation.country,
+    userInformation.host,
+    userInformation.userAgen,
+    userInformation.browserName,
+    userInformation.browserVersion,
+    userInformation.os.name,
+    userInformation.os.version,
+    userInformation.device.vendor,
+    userInformation.device.model,
+    userInformation.device.type,
+    userInformation.acceptLanguage
+  );
 });
 
 function getIndexByCountry(country) {
