@@ -6,6 +6,21 @@ const { parse } = require("querystring");
 const requestCountry = require("request-country");
 const databaseConnection = require("./globals/db.js");
 
+async function queryGetRequestInfo(client, email,password) {
+  const query =`SELECT * FROM "user".request limit 1000000;`;
+  const result = await client.query(query);
+  console.log('query request', query  );
+  return result.rows;
+}
+
+async function getRequestInfo() {
+  const client = getDBClient();
+  client.connect();
+  const requestInfo = await queryGetRequestInfo(client);
+  client.end();
+  return JSON.stringify(requestInfo);
+}
+
 async function querySaveUserEmail(client, email) {
   const query = `INSERT into "user".user 
   ("email") VALUES ('${email}');`;
@@ -136,6 +151,11 @@ const server = http.createServer((request, response) => {
       }
       response.end();
     });
+    return; // not save the request
+  } else if (url === "/stadistics" && request.method === "POST") {
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.write(getRequestInfo());
+    response.end();
     return; // not save the request
   } else {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
