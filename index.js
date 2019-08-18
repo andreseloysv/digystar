@@ -2,6 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const parser = require("ua-parser-js");
 const util = require("util");
+const { parse } = require("querystring");
 const requestCountry = require("request-country");
 const databaseConnection = require("./globals/db.js");
 
@@ -81,13 +82,6 @@ async function saveRequestInfo(
 }
 
 const server = http.createServer((request, response) => {
-
-  let data = [];
-  let postParameters = {};
-  request.on("data", chunk => {
-    data.push(chunk);
-  });
-
   let userInformation = {};
   userInformation.ip =
     request.headers["x-forwarded-for"] || request.connection.remoteAddress;
@@ -110,12 +104,12 @@ const server = http.createServer((request, response) => {
 
   const url = request.url;
   if (url === "/" && request.method === "POST") {
-    console.log(postParameters);
-    request.on("end", () => {
-      postParameters = JSON.parse(data);
-      saveUserEmail(postParameters.email);
+    collectRequestData(request, result => {
+      saveUserEmail(result["user-email"]);
     });
-    const thankyouFileName = `thankyou${getLanguageByCountry(userInformation.country)}`;
+    const thankyouFileName = `thankyou${getLanguageByCountry(
+      userInformation.country
+    )}`;
     fs.readFile(`src/${thankyouFileName}.html`, function(error, thankyou) {
       if (error) {
         response.writeHead(404);
@@ -126,7 +120,12 @@ const server = http.createServer((request, response) => {
       }
       response.end();
     });
-  }else{
+  } else if (url === "/favicon.ico" && request.method === "GET") {
+    response.writeHead(200, { "Content-Type": "text/html" });
+    response.write("ok");
+    response.end();
+    return; // not save the request
+  } else {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
       if (error) {
         response.writeHead(404);
@@ -182,6 +181,21 @@ function getLanguageByCountry(country) {
     return (indexFileName = "Spanish");
   } else {
     return (indexFileName = "");
+  }
+}
+
+function collectRequestData(request, callback) {
+  const FORM_URLENCODED = "application/x-www-form-urlencoded";
+  if (request.headers["content-type"] === FORM_URLENCODED) {
+    let body = "";
+    request.on("data", chunk => {
+      body += chunk.toString();
+    });
+    request.on("end", () => {
+      callback(parse(body));
+    });
+  } else {
+    callback(null);
   }
 }
 
