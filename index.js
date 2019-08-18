@@ -17,7 +17,7 @@ const server = http.createServer((request, response) => {
 
   console.log('userInformation',userInformation);
 
-  const indexFileName = getIndexByCountry();
+  const indexFileName = getIndexByCountry(userInformation.country);
   fs.readFile(`src/${indexFileName}.html`, function(error, index) {
     if (error) {
       response.writeHead(404);
@@ -30,12 +30,10 @@ const server = http.createServer((request, response) => {
   });
 });
 
-function getIndexByCountry(){
-      // request.coutry
-  const country = true;
-  if (country) {
+function getIndexByCountry(country){
+  if (country == 'DE' || country == 'AT') {
     return indexFileName = "indexGerman";
-  }else if (country)
+  }else if (country == 'MX' || country == 'ES' || country == 'CO' || country == 'VE' || country == 'CL' || country == 'AR' || country == 'PE'|| country == 'EC'|| country == 'BO' || country == 'PY' || country == 'GT' || country == 'PR'|| country == 'DO' || country == 'SV' || country == 'HN' || country == 'PA' || country == 'UY' || country == 'CR' || country == 'NI')
   {
     return indexFileName = "indexSpanish";
   }else if (country)
