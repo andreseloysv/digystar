@@ -5,7 +5,21 @@ const util = require("util");
 const requestCountry = require("request-country");
 const databaseConnection = require("./globals/db.js");
 
-async function queryUpdate(
+async function querySaveUserEmail(client, email) {
+  const query = `INSERT into "user".user 
+  ("email") VALUES ('${email}');`;
+  console.log("query insert user email", query);
+  return await client.query(query);
+}
+
+async function saveUserEmail(email = "") {
+  let client = databaseConnection.getDBClient();
+  client.connect();
+  await querySaveUserEmail(client, email);
+  client.end();
+}
+
+async function querySaveRequestInfo(
   client,
   ip,
   country,
@@ -48,7 +62,7 @@ async function saveRequestInfo(
 ) {
   let client = databaseConnection.getDBClient();
   client.connect();
-  await queryUpdate(
+  await querySaveRequestInfo(
     client,
     ip,
     country,
@@ -67,8 +81,12 @@ async function saveRequestInfo(
 }
 
 const server = http.createServer((request, response) => {
-  // console.log(util.inspect(request))
-  // console.log(JSON.stringify(request.connection.remoteAddress));
+
+  let data = [];
+  let postParameters = {};
+  request.on("data", chunk => {
+    data.push(chunk);
+  });
 
   let userInformation = {};
   userInformation.ip =
@@ -88,17 +106,39 @@ const server = http.createServer((request, response) => {
   userInformation.device.type = ua.device.type;
   userInformation.acceptLanguage = request.headers["accept-language"];
 
-  const indexFileName = getIndexByCountry(userInformation.country);
-  fs.readFile(`src/${indexFileName}.html`, function(error, index) {
-    if (error) {
-      response.writeHead(404);
-      response.write("Contents you are looking are Not Found");
-    } else {
-      response.writeHead(200, { "Content-Type": "text/html" });
-      response.write(index);
-    }
-    response.end();
-  });
+  const indexFileName = `index${getLanguageByCountry(userInformation.country)}`;
+
+  const url = request.url;
+  if (url === "/" && request.method === "POST") {
+    console.log(postParameters);
+    request.on("end", () => {
+      postParameters = JSON.parse(data);
+      saveUserEmail(postParameters.email);
+    });
+    const thankyouFileName = `thankyou${getLanguageByCountry(userInformation.country)}`;
+    fs.readFile(`src/${thankyouFileName}.html`, function(error, thankyou) {
+      if (error) {
+        response.writeHead(404);
+        response.write("Contents you are looking are Not Found");
+      } else {
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.write(thankyou);
+      }
+      response.end();
+    });
+  }else{
+    fs.readFile(`src/${indexFileName}.html`, function(error, index) {
+      if (error) {
+        response.writeHead(404);
+        response.write("Contents you are looking are Not Found");
+      } else {
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.write(index);
+      }
+      response.end();
+    });
+  }
+
   saveRequestInfo(
     userInformation.ip,
     userInformation.country,
@@ -115,9 +155,9 @@ const server = http.createServer((request, response) => {
   );
 });
 
-function getIndexByCountry(country) {
+function getLanguageByCountry(country) {
   if (country === "DE" || country === "AT") {
-    return (indexFileName = "indexGerman");
+    return (indexFileName = "German");
   } else if (
     country === "MX" ||
     country === "ES" ||
@@ -139,9 +179,9 @@ function getIndexByCountry(country) {
     country === "CR" ||
     country === "NI"
   ) {
-    return (indexFileName = "indexSpanish");
+    return (indexFileName = "Spanish");
   } else {
-    return (indexFileName = "index");
+    return (indexFileName = "");
   }
 }
 
