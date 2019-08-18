@@ -7,14 +7,14 @@ const requestCountry = require("request-country");
 const databaseConnection = require("./globals/db.js");
 
 async function queryGetRequestInfo(client, email,password) {
-  const query =`SELECT * FROM "user".request limit 1000000;`;
+  const query =`SELECT count(id), country FROM "user".request group by country;`;
   const result = await client.query(query);
   console.log('query request', query  );
   return result.rows;
 }
 
 async function getRequestInfo() {
-  const client = getDBClient();
+  const client = databaseConnection.getDBClient();
   client.connect();
   const requestInfo = await queryGetRequestInfo(client);
   client.end();
@@ -96,7 +96,7 @@ async function saveRequestInfo(
   client.end();
 }
 
-const server = http.createServer((request, response) => {
+const server = http.createServer(async (request, response) => {
   let userInformation = {};
   userInformation.ip =
     request.headers["x-forwarded-for"] || request.connection.remoteAddress;
@@ -154,7 +154,8 @@ const server = http.createServer((request, response) => {
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "POST") {
     response.writeHead(200, { "Content-Type": "application/json" });
-    response.write(getRequestInfo());
+    const info = await getRequestInfo();
+    response.write(info);
     response.end();
     return; // not save the request
   } else {

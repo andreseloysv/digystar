@@ -1,28 +1,272 @@
-<!DOCTYPE html>
-<meta charset="utf-8" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Andres Eloy Sanchez Vargas, Jesus Sanchez, Luis Carvajal,"
+    />
+    <title>DIGYSTAR</title>
 
-<!-- Load d3.js -->
-<script src="http://d3js.org/d3.v4.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Lato:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
 
-<!-- Create an element where the map will take place -->
-<svg
-  id="my_dataviz"
-  width="800"
-  height="600"
-  style="margin: auto;display: block;"
-></svg>
+    <style>
+      * {
+        font-family: "Lato", sans-serif;
+        word-wrap: break-word;
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      @media (min-width: 576px) {
+        html {
+          font-size: 12px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        html {
+          font-size: 18px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        html {
+          font-size: 20px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        html {
+          font-size: 20px;
+        }
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      .bigger {
+        font-size: 5rem;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar navbar-white bg-white shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a
+            href="#"
+            class="navbar-brand d-flex align-items-center"
+            style="color:#333"
+          >
+            DIGYSTAR
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+      <section class="jumbotron" style="background: white">
+        <div class="container text-center">
+          <h1 class="jumbotron-heading bigger">
+            <strong>Total visits</strong>
+          </h1>
+          <h4 class="jumbotron-heading text-muted" id="numberOfVisits">
+            0
+          </h4>
+        </div>
+      </section>
+    </main>
+
+    <main role="main">
+      <section class="jumbotron" style="background: white">
+        <div class="container text-center">
+          <h1 class="jumbotron-heading bigger">
+            <strong>Total visits Spanish</strong>
+          </h1>
+          <h4 class="jumbotron-heading text-muted" id="numberOfVisitsSpanish">
+            0
+          </h4>
+        </div>
+      </section>
+    </main>
+
+    <main role="main">
+      <section class="jumbotron" style="background: white">
+        <div class="container text-center">
+          <h1 class="jumbotron-heading bigger">
+            <strong>Total visits English</strong>
+          </h1>
+          <h4 class="jumbotron-heading text-muted" id="numberOfVisitsEnglish">
+            0
+          </h4>
+        </div>
+      </section>
+    </main>
+
+    <main role="main">
+      <section class="jumbotron" style="background: white">
+        <div class="container text-center">
+          <h1 class="jumbotron-heading bigger">
+            <strong>Total visits German</strong>
+          </h1>
+          <h4 class="jumbotron-heading text-muted" id="numberOfVisitsGerman">
+            0
+          </h4>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-5" style="background: #f9f9f9">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <p>
+              All Rights Reserved
+            </p>
+            <p>
+              © DIGYSTAR
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <p>
+              <strong>
+                Our Mission
+              </strong>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <p>
+              <strong>
+                Our Team
+              </strong>
+            </p>
+          </div>
+        </div>
+        <p class="text-muted">
+          Made with
+          <!-- -->
+          <picture
+            ><source
+              srcset="https://res.cloudinary.com/dapulse/image/upload/f_auto,w_0.6/remote_mondaycom_static/img/heart_small.png"
+              media="(max-width: 768px)"/>
+            <img
+              src="https://res.cloudinary.com/dapulse/image/upload/f_auto,w_16/remote_mondaycom_static/img/heart_small.png"
+              alt="red heart"
+          /></picture>
+          <!-- -->by
+          <!-- -->
+          DIGYSTAR
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
 <script>
-  let data;
-  fetch("http://www.digystar.com/stadistics", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({})
-  }).then(response => (data = response.json()));
+  var iFrequency = 10000; // expressed in miliseconds
+  var myInterval = 0;
 
-  console.log(data);
+  // STARTS and Resets the loop if any
+  function startLoop() {
+    if (myInterval > 0) clearInterval(myInterval); // stop
+    myInterval = setInterval("getData()", iFrequency); // run
+  }
+  getData();
+  startLoop();
+
+  function getData() {
+    let data;
+    fetch("http://localhost:1337/stadistics", {
+      //fetch("http://www.digystar.com/stadistics", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({})
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(JSON.stringify(data));
+        let totalVisits = 0;
+        let totalVisitsSpanish = 0;
+        let totalVisitsEnglish = 0;
+        let totalVisitsGerman = 0;
+        data.forEach(element => {
+          if (element.country !== "false") {
+            totalVisits += +element.count;
+          }
+          if (element.country === "DE" || element.country === "AT") {
+            totalVisitsGerman += +element.count;
+          } else
+          if (
+            element.country === "MX" ||
+            element.country === "ES" ||
+            element.country === "CO" ||
+            element.country === "VE" ||
+            element.country === "CL" ||
+            element.country === "AR" ||
+            element.country === "PE" ||
+            element.country === "EC" ||
+            element.country === "BO" ||
+            element.country === "PY" ||
+            element.country === "GT" ||
+            element.country === "PR" ||
+            element.country === "DO" ||
+            element.country === "SV" ||
+            element.country === "HN" ||
+            element.country === "PA" ||
+            element.country === "UY" ||
+            element.country === "CR" ||
+            element.country === "NI"
+          ) {
+            totalVisitsSpanish += +element.count;
+          }
+          else if (element.country !== "false"){
+            totalVisitsEnglish += +element.count;
+          }
+        });
+        document.getElementById("numberOfVisits").innerText = totalVisits;
+        document.getElementById(
+          "numberOfVisitsSpanish"
+        ).innerText = totalVisitsSpanish;
+        document.getElementById(
+          "numberOfVisitsEnglish"
+        ).innerText = totalVisitsEnglish;
+        document.getElementById(
+          "numberOfVisitsGerman"
+        ).innerText = totalVisitsGerman;
+      });
+  }
 </script>
