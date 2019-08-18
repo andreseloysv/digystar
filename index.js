@@ -1,7 +1,20 @@
 const http = require("http");
-fs = require("fs");
+const fs = require("fs");
+const parser = require('ua-parser-js');
+const util = require('util');
 
 const server = http.createServer((request, response) => {
+  // console.log(util.inspect(request))
+  // console.log(JSON.stringify(request.connection.remoteAddress));
+
+  let userInformation = {};
+  userInformation.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
+  userInformation.host = request.headers.host;
+  userInformation.userAgent = parser(request.headers['user-agent']);
+  userInformation.acceptLanguage = request.headers['accept-language'];
+
+  console.log('userInformation',userInformation);
+
   const indexFileName = getIndexByCountry();
   fs.readFile(`src/${indexFileName}.html`, function(error, index) {
     if (error) {
