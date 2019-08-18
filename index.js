@@ -12,7 +12,16 @@ const server = http.createServer((request, response) => {
   userInformation.country = requestCountry(request);
   userInformation.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
   userInformation.host = request.headers.host;
-  userInformation.userAgent = parser(request.headers['user-agent']);
+  const ua = parser(request.headers['user-agent']);
+  userInformation.browserName = ua.browser.name;
+  userInformation.browserVersion = ua.browser.version;
+  userInformation.os = {};
+  userInformation.os.name = ua.engine.name;
+  userInformation.os.version = ua.engine.version;
+  userInformation.device = {};
+  userInformation.device.vendor = ua.device.vendor;
+  userInformation.device.model = ua.device.model;
+  userInformation.device.type = ua.device.type;
   userInformation.acceptLanguage = request.headers['accept-language'];
 
   console.log('userInformation',userInformation);
@@ -31,12 +40,12 @@ const server = http.createServer((request, response) => {
 });
 
 function getIndexByCountry(country){
-  if (country == 'DE' || country == 'AT') {
+  if (country === 'DE' || country === 'AT') {
     return indexFileName = "indexGerman";
-  }else if (country == 'MX' || country == 'ES' || country == 'CO' || country == 'VE' || country == 'CL' || country == 'AR' || country == 'PE'|| country == 'EC'|| country == 'BO' || country == 'PY' || country == 'GT' || country == 'PR'|| country == 'DO' || country == 'SV' || country == 'HN' || country == 'PA' || country == 'UY' || country == 'CR' || country == 'NI')
+  }else if (country === 'MX' || country === 'ES' || country === 'CO' || country === 'VE' || country === 'CL' || country === 'AR' || country === 'PE'|| country === 'EC'|| country === 'BO' || country === 'PY' || country === 'GT' || country === 'PR'|| country === 'DO' || country === 'SV' || country === 'HN' || country === 'PA' || country === 'UY' || country === 'CR' || country === 'NI')
   {
     return indexFileName = "indexSpanish";
-  }else if (country)
+  }else 
   {
     return indexFileName = "index";
   }
