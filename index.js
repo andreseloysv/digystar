@@ -3,7 +3,7 @@ const fs = require("fs");
 const parser = require("ua-parser-js");
 const util = require("util");
 const requestCountry = require("request-country");
-let getDBClient = require("./globals/db.js");
+const databaseConnection = require("./globals/db.js");
 
 async function queryUpdate(
   client,
@@ -21,14 +21,14 @@ async function queryUpdate(
   acceptLanguage
 ) {
   const query = `INSERT into "user".request 
-  ("ip", "country", "host", userAgen,
-  browserName, browserVersion,
-  osName,osVersion,deviceVendor,
-  deviceModel,deviceType,
-  acceptLanguage) VALUES ('${ip}','${country}',
-  '${host}','${userAgen}','${browserName}','${browserVersion}','${osName}'
+  ("ip", "country", "host", "useragen",
+  "browsername", "browserversion",
+  "osname","osversion","devicevendor",
+  "devicemodel","devicetype",
+  "acceptlanguage") VALUES ('${ip}','${country}',
+  '${host}','${userAgen}','${browserName}','${browserVersion}','${osName}',
   '${osVersion}','${deviceVendor}','${deviceModel}','${deviceType}','${acceptLanguage}');`;
-  console.log("query update User", query);
+  console.log("query insert request", query);
   return await client.query(query);
 }
 
@@ -46,7 +46,7 @@ async function saveRequestInfo(
   deviceType = "",
   acceptLanguage = ""
 ) {
-  let client = getDBClient();
+  let client = databaseConnection.getDBClient();
   client.connect();
   await queryUpdate(
     client,
