@@ -13,6 +13,7 @@ const server = http.createServer((request, response) => {
   userInformation.ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
   userInformation.host = request.headers.host;
   const ua = parser(request.headers['user-agent']);
+  userInformation.userAgen = ua.ua;
   userInformation.browserName = ua.browser.name;
   userInformation.browserVersion = ua.browser.version;
   userInformation.os = {};
