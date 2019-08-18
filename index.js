@@ -126,9 +126,16 @@ const server = http.createServer((request, response) => {
     response.end();
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "GET") {
-    response.writeHead(200, { "Content-Type": "text/html" });
-    response.write("ok");
-    response.end();
+    fs.readFile(`src/stadistics.html`, function(error, index) {
+      if (error) {
+        response.writeHead(404);
+        response.write("Contents you are looking are Not Found");
+      } else {
+        response.writeHead(200, { "Content-Type": "text/html" });
+        response.write(index);
+      }
+      response.end();
+    });
     return; // not save the request
   } else {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
