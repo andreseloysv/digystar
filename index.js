@@ -5,6 +5,16 @@ const util = require("util");
 const { parse } = require("querystring");
 const requestCountry = require("request-country");
 const databaseConnection = require("./globals/db.js");
+const auth = require('http-auth');
+var basic = auth.basic({
+  realm: "Simon Area."
+}, (username, password, callback) => { 
+  // Custom authentication
+  // Use callback(error) if you want to throw async error.
+  callback(username === "weandresjesusluisare" && password === "therealdigystar");
+}
+);
+
 
 async function queryGetRequestInfo(client, email,password) {
   const query =`SELECT count(id), country FROM "user".request group by country;`;
@@ -141,15 +151,17 @@ const server = http.createServer(async (request, response) => {
     response.end();
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "GET") {
-    fs.readFile(`src/stadistics.html`, function(error, index) {
-      if (error) {
-        response.writeHead(404);
-        response.write("Contents you are looking are Not Found");
-      } else {
-        response.writeHead(200, { "Content-Type": "text/html" });
-        response.write(index);
-      }
-      response.end();
+    auth.connect(basic)(request, response, function() {
+      fs.readFile(`src/stadistics.html`, function(error, index) {
+        if (error) {
+          response.writeHead(404);
+          response.write("Contents you are looking are Not Found");
+        } else {
+          response.writeHead(200, { "Content-Type": "text/html" });
+          response.write(index);
+        }
+        response.end();
+      });
     });
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "POST") {
