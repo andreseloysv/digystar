@@ -125,6 +125,11 @@ const server = http.createServer((request, response) => {
     response.write("ok");
     response.end();
     return; // not save the request
+  } else if (url === "/stadistics" && request.method === "GET") {
+    response.writeHead(200, { "Content-Type": "text/html" });
+    response.write("ok");
+    response.end();
+    return; // not save the request
   } else {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
       if (error) {
