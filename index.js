@@ -7,6 +7,8 @@ const requestCountry = require("request-country");
 const RequestModul = require("./modul/request.js");
 const LanguageCode = require("./LanguageCode/languageCode.js");
 const auth = require("http-auth");
+const path = require("path");
+
 var basic = auth.basic(
   {
     realm: "Digystar PrivateArea."
@@ -20,10 +22,37 @@ var basic = auth.basic(
 
 const server = http.createServer(async (request, response) => {
   const userInformation = getUserInformation(request);
+  const url = request.url;
+
+  var filePath = "." + request.url;
+  if (filePath == "./") {
+    filePath = "./index.html";
+  }
+
+  var extname = String(path.extname(filePath)).toLowerCase();
+  var mimeTypes = {
+    ".html": "text/html",
+    ".js": "text/javascript",
+    ".css": "text/css",
+    ".json": "application/json",
+    ".png": "image/png",
+    ".jpg": "image/jpg",
+    ".gif": "image/gif",
+    ".wav": "audio/wav",
+    ".mp4": "video/mp4",
+    ".woff": "application/font-woff",
+    ".ttf": "application/font-ttf",
+    ".eot": "application/vnd.ms-fontobject",
+    ".otf": "application/font-otf",
+    ".svg": "application/image/svg+xml",
+    ".wasm": "application/wasm"
+  };
+
+  const contentType = mimeTypes[extname] || "application/octet-stream";
+
   const indexFileName = `index${LanguageCode.getLanguageByCountry(
     userInformation.country
   )}`;
-  const url = request.url;
 
   if (url === "/" && request.method === "POST") {
     collectRequestData(request, result => {
@@ -62,12 +91,14 @@ const server = http.createServer(async (request, response) => {
     });
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "POST") {
-    response.writeHead(200, { "Content-Type": "application/json" });
-    const info = await RequestModul.getRequestInfo();
-    response.write(info);
-    response.end();
-    return; // not save the request
-  } else {
+      auth.connect(basic)(request, response, async function() {
+        response.writeHead(200, { "Content-Type": "application/json" });
+        const info = await RequestModul.getRequestInfo();
+        response.write(info);
+        response.end();
+        return; // not save the request
+      });
+  } else if(url === "/" && request.method === "GET") {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
       if (error) {
         response.writeHead(404);
@@ -78,6 +109,25 @@ const server = http.createServer(async (request, response) => {
       }
       response.end();
     });
+  } else {
+    fs.readFile(filePath, function(error, content) {
+      if (error) {
+          if(error.code == 'ENOENT') {
+              fs.readFile('./404.html', function(error, content) {
+                  response.writeHead(404, { 'Content-Type': contentType });
+                  response.end(content, 'utf-8');
+              });
+          }
+          else {
+              response.writeHead(500);
+              response.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
+          }
+      }
+      else {
+          response.writeHead(200, { 'Content-Type': contentType });
+          response.end(content, 'utf-8');
+      }
+  });
   }
 
   RequestModul.saveRequestInfo(
