@@ -56,7 +56,9 @@ const server = http.createServer(async (request, response) => {
 
   if (url === "/" && request.method === "POST") {
     collectRequestData(request, result => {
-      RequestModul.saveUserEmail(result["user-email"]);
+      if (validateEmail(result["user-email"])) {
+        RequestModul.saveUserEmail(result["user-email"]);
+      }
     });
     const thankyouFileName = `thankyou${LanguageCode.getLanguageByCountry(
       userInformation.country
@@ -145,6 +147,11 @@ const server = http.createServer(async (request, response) => {
     userInformation.acceptLanguage
   );
 });
+
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
 
 function collectRequestData(request, callback) {
   const FORM_URLENCODED = "application/x-www-form-urlencoded";
