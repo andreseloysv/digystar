@@ -25,8 +25,8 @@ const server = http.createServer(async (request, response) => {
   const url = request.url;
 
   var filePath = "." + request.url;
-  if (filePath == "./") {
-    filePath = "./index.html";
+  if (filePath == "src/") {
+    filePath = "src/index.html";
   }
 
   var extname = String(path.extname(filePath)).toLowerCase();
@@ -113,6 +113,7 @@ const server = http.createServer(async (request, response) => {
     });
   } else {
     fs.readFile(filePath, function(error, content) {
+      console.log("filePath", filePath);
       if (error) {
           if(error.code == 'ENOENT') {
               fs.readFile('./404.html', function(error, content) {
