@@ -24,7 +24,7 @@ const server = http.createServer(async (request, response) => {
   const userInformation = getUserInformation(request);
   const url = request.url;
 
-  var filePath = "." + request.url;
+  var filePath = "src/" + request.url;
   if (filePath == "src/") {
     filePath = "src/index.html";
   }
@@ -74,7 +74,7 @@ const server = http.createServer(async (request, response) => {
       response.end();
     });
   } else if (url === "/favicon.ico" && request.method === "GET") {
-    response.writeHead(200, { "Content-Type": "text/html" });
+    response.writeHead(200, { "Content-Type": contentType });
     response.write("ok");
     response.end();
     return; // not save the request
