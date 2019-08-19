@@ -4,135 +4,32 @@ const parser = require("ua-parser-js");
 const util = require("util");
 const { parse } = require("querystring");
 const requestCountry = require("request-country");
-const databaseConnection = require("./globals/db.js");
-const auth = require('http-auth');
-var basic = auth.basic({
-  realm: "Simon Area."
-}, (username, password, callback) => { 
-  // Custom authentication
-  // Use callback(error) if you want to throw async error.
-  callback(username === "weandresjesusluisare" && password === "therealdigystar");
-}
+const RequestModul = require("./modul/request.js");
+const LanguageCode = require("./LanguageCode/languageCode.js");
+const auth = require("http-auth");
+var basic = auth.basic(
+  {
+    realm: "Digystar PrivateArea."
+  },
+  (username, password, callback) => {
+    callback(
+      username === "weandresjesusluisare" && password === "therealdigystar"
+    );
+  }
 );
 
-
-async function queryGetRequestInfo(client, email,password) {
-  const query =`SELECT count(id), country FROM "user".request group by country;`;
-  const result = await client.query(query);
-  console.log('query request', query  );
-  return result.rows;
-}
-
-async function getRequestInfo() {
-  const client = databaseConnection.getDBClient();
-  client.connect();
-  const requestInfo = await queryGetRequestInfo(client);
-  client.end();
-  return JSON.stringify(requestInfo);
-}
-
-async function querySaveUserEmail(client, email) {
-  const query = `INSERT into "user".user 
-  ("email") VALUES ('${email}');`;
-  console.log("query insert user email", query);
-  return await client.query(query);
-}
-
-async function saveUserEmail(email = "") {
-  let client = databaseConnection.getDBClient();
-  client.connect();
-  await querySaveUserEmail(client, email);
-  client.end();
-}
-
-async function querySaveRequestInfo(
-  client,
-  ip,
-  country,
-  host,
-  userAgen,
-  browserName,
-  browserVersion,
-  osName,
-  osVersion,
-  deviceVendor,
-  deviceModel,
-  deviceType,
-  acceptLanguage
-) {
-  const query = `INSERT into "user".request 
-  ("ip", "country", "host", "useragen",
-  "browsername", "browserversion",
-  "osname","osversion","devicevendor",
-  "devicemodel","devicetype",
-  "acceptlanguage") VALUES ('${ip}','${country}',
-  '${host}','${userAgen}','${browserName}','${browserVersion}','${osName}',
-  '${osVersion}','${deviceVendor}','${deviceModel}','${deviceType}','${acceptLanguage}');`;
-  console.log("query insert request", query);
-  return await client.query(query);
-}
-
-async function saveRequestInfo(
-  ip = "",
-  country = "",
-  host = "",
-  userAgen = "",
-  browserName = "",
-  browserVersion = "",
-  osName = "",
-  osVersion = "",
-  deviceVendor = "",
-  deviceModel = "",
-  deviceType = "",
-  acceptLanguage = ""
-) {
-  let client = databaseConnection.getDBClient();
-  client.connect();
-  await querySaveRequestInfo(
-    client,
-    ip,
-    country,
-    host,
-    userAgen,
-    browserName,
-    browserVersion,
-    osName,
-    osVersion,
-    deviceVendor,
-    deviceModel,
-    deviceType,
-    acceptLanguage
-  );
-  client.end();
-}
-
 const server = http.createServer(async (request, response) => {
-  let userInformation = {};
-  userInformation.ip =
-    request.headers["x-forwarded-for"] || request.connection.remoteAddress;
-  userInformation.country = requestCountry(request);
-  userInformation.host = request.headers.host;
-  const ua = parser(request.headers["user-agent"]);
-  userInformation.userAgen = ua.ua;
-  userInformation.browserName = ua.browser.name;
-  userInformation.browserVersion = ua.browser.version;
-  userInformation.os = {};
-  userInformation.os.name = ua.engine.name;
-  userInformation.os.version = ua.engine.version;
-  userInformation.device = {};
-  userInformation.device.vendor = ua.device.vendor;
-  userInformation.device.model = ua.device.model;
-  userInformation.device.type = ua.device.type;
-  userInformation.acceptLanguage = request.headers["accept-language"];
-
-  const indexFileName = `index${getLanguageByCountry(userInformation.country)}`;
-
+  const userInformation = getUserInformation(request);
+  const indexFileName = `index${LanguageCode.getLanguageByCountry(
+    userInformation.country
+  )}`;
   const url = request.url;
+
   if (url === "/" && request.method === "POST") {
     collectRequestData(request, result => {
-      saveUserEmail(result["user-email"]);
+      RequestModul.saveUserEmail(result["user-email"]);
     });
-    const thankyouFileName = `thankyou${getLanguageByCountry(
+    const thankyouFileName = `thankyou${LanguageCode.getLanguageByCountry(
       userInformation.country
     )}`;
     fs.readFile(`src/${thankyouFileName}.html`, function(error, thankyou) {
@@ -166,7 +63,7 @@ const server = http.createServer(async (request, response) => {
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "POST") {
     response.writeHead(200, { "Content-Type": "application/json" });
-    const info = await getRequestInfo();
+    const info = await RequestModul.getRequestInfo();
     response.write(info);
     response.end();
     return; // not save the request
@@ -183,7 +80,7 @@ const server = http.createServer(async (request, response) => {
     });
   }
 
-  saveRequestInfo(
+  RequestModul.saveRequestInfo(
     userInformation.ip,
     userInformation.country,
     userInformation.host,
@@ -199,36 +96,6 @@ const server = http.createServer(async (request, response) => {
   );
 });
 
-function getLanguageByCountry(country) {
-  if (country === "DE" || country === "AT") {
-    return (indexFileName = "German");
-  } else if (
-    country === "MX" ||
-    country === "ES" ||
-    country === "CO" ||
-    country === "VE" ||
-    country === "CL" ||
-    country === "AR" ||
-    country === "PE" ||
-    country === "EC" ||
-    country === "BO" ||
-    country === "PY" ||
-    country === "GT" ||
-    country === "PR" ||
-    country === "DO" ||
-    country === "SV" ||
-    country === "HN" ||
-    country === "PA" ||
-    country === "UY" ||
-    country === "CR" ||
-    country === "NI"
-  ) {
-    return (indexFileName = "Spanish");
-  } else {
-    return (indexFileName = "");
-  }
-}
-
 function collectRequestData(request, callback) {
   const FORM_URLENCODED = "application/x-www-form-urlencoded";
   if (request.headers["content-type"] === FORM_URLENCODED) {
@@ -242,6 +109,27 @@ function collectRequestData(request, callback) {
   } else {
     callback(null);
   }
+}
+
+function getUserInformation(request) {
+  let userInformation = {};
+  userInformation.ip =
+    request.headers["x-forwarded-for"] || request.connection.remoteAddress;
+  userInformation.country = requestCountry(request);
+  userInformation.host = request.headers.host;
+  const ua = parser(request.headers["user-agent"]);
+  userInformation.userAgen = ua.ua;
+  userInformation.browserName = ua.browser.name;
+  userInformation.browserVersion = ua.browser.version;
+  userInformation.os = {};
+  userInformation.os.name = ua.engine.name;
+  userInformation.os.version = ua.engine.version;
+  userInformation.device = {};
+  userInformation.device.vendor = ua.device.vendor;
+  userInformation.device.model = ua.device.model;
+  userInformation.device.type = ua.device.type;
+  userInformation.acceptLanguage = request.headers["accept-language"];
+  return userInformation;
 }
 
 const port = process.env.PORT || 1337;
