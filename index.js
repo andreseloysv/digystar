@@ -73,6 +73,7 @@ const server = http.createServer(async (request, response) => {
       }
       response.end();
     });
+    return; // not save the request
   } else if (url === "/favicon.ico" && request.method === "GET") {
     response.writeHead(200, { "Content-Type": contentType });
     response.write("ok");
@@ -98,8 +99,9 @@ const server = http.createServer(async (request, response) => {
       const info = await RequestModul.getRequestInfo();
       response.write(info);
       response.end();
-      return; // not save the request
     });
+    return; // not save the request
+    // Save the info
   } else if (url === "/" && request.method === "GET") {
     fs.readFile(`src/${indexFileName}.html`, function(error, index) {
       if (error) {
@@ -132,8 +134,8 @@ const server = http.createServer(async (request, response) => {
         response.writeHead(200, { "Content-Type": contentType });
         response.end(content, "utf-8");
       }
-      return; // not save the request
     });
+    return; // not save the request
   }
 
   RequestModul.saveRequestInfo(
