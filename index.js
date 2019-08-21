@@ -76,8 +76,7 @@ const server = http.createServer(async (request, response) => {
     return; // not save the request
   } else if (url === "/favicon.ico" && request.method === "GET") {
     response.writeHead(200, { "Content-Type": contentType });
-    response.write("ok");
-    response.end();
+    response.end(content, "utf-8");
     return; // not save the request
   } else if (url === "/stadistics" && request.method === "GET") {
     auth.connect(basic)(request, response, function() {
