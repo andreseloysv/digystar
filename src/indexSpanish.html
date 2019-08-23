@@ -25,66 +25,18 @@
       type="text/css"
     />
 
-    <style>
-      * {
-        font-family: 'Lato', sans-serif;
-        word-wrap: break-word;
-      }
-
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 576px) {
-        html {
-          font-size: 14px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 18px;
-        }
-      }
-
-      @media (min-width: 992px) {
-        html {
-          font-size: 20px;
-        }
-      }
-
-      @media (min-width: 1200px) {
-        html {
-          font-size: 20px;
-        }
-      }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
     <header>
-      <div class="navbar navbar-white bg-white shadow-sm">
+      <div class="header-menu navbar navbar-white bg-white shadow-sm">
         <div class="container d-flex justify-content-between">
           <a
             href="http://www.digystar.com"
             class="navbar-brand d-flex align-items-center"
             style="color:#333"
           >
-            DIGYSTAR
+            <img class="header-icon" src="img/dDigystarSmall.png" />IGYSTAR
           </a>
         </div>
       </div>
@@ -92,7 +44,7 @@
 
     <main role="main">
       <section class="jumbotron" style="background: white">
-        <div class="container">
+        <div class="container" style="padding: 0">
           <h1 class="jumbotron-heading">
             <strong
               >Revive bellos momentos de los seres queridos que ya no
@@ -104,7 +56,7 @@
           </h4>
           <form method="POST" action="/">
             <div class="row justify-content-center">
-              <div class="col-md-3 mb-3">
+              <div class="col-sm-3 col-md-6 mb-3">
                 <input
                   name="user-email"
                   type="email"
@@ -115,10 +67,10 @@
                   autofocus=""
                 />
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-sm-3 col-md-6 mb-3">
                 <button
                   type="submit"
-                  class="btn btn-primary my-2"
+                  class="btn btn-lg btn-primary my-2"
                   style="margin: 0!important;"
                 >
                   Pruébalo gratis un mes
@@ -129,42 +81,17 @@
         </div>
       </section>
 
-      <div class="py-5" style="background: #f9f9f9">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 py-2">
-              <h3>
-                Todos los recuerdos, videos, fotos, audios y textos de tu seres
-                queridos en un solo lugar
-              </h3>
-            </div>
-            <div class="col-lg-4 py-2">
-              <h3>
-                Grupo privado para compartir las memorias de los seres queridos
-                con amigos y familiares cercanos
-              </h3>
-            </div>
-            <div class="col-lg-4 py-2">
-              <h3>
-                Importa de forma segura las memorias de tu seres queridos
-                provenientes de redes sociales como facebook
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container py-5">
+      <div class="container py-4">
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
               DIGYSTAR permite vivir para siempre de forma digital
             </h2>
-            <p class="lead">
+            <p class>
               Por siempre todos los recuerdos, videos, fotos, audios y textos de
               tu seres queridos.
             </p>
-            <p>
+            <p class="text-muted">
               Imortalidad digital.
             </p>
           </div>
@@ -193,7 +120,7 @@
             <h2 class="featurette-heading">
               Comparte en un grupo privado las memorias con amigos y familiares
             </h2>
-            <p class="lead">
+            <p class>
               Contribuye aportando videos, fotos, audios y textos de los bellos
               momentos que cada uno del grupo ha vivido con el ser querido que
               ya partió.
@@ -233,7 +160,7 @@
               twitter, spotify asi como tambien de tu computador personal o
               telefono inteligente para incorporarlo a las memorias.
             </p>
-            <p>Haz click aqui para saber como hacerlo</p>
+            <p class="text-muted">Haz click aqui para saber como hacerlo</p>
           </div>
           <div class="col-md-5">
             <svg

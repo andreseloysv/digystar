@@ -1,0 +1,91 @@
+* {
+  font-family: 'Lato', sans-serif;
+  word-wrap: break-word;
+}
+
+html {
+  font-size: 14px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.header-menu {
+  height: 60px;
+}
+.jumbotron {
+  margin: 0;
+}
+h1.jumbotron-heading {
+  margin-bottom: 40px;
+}
+.jumbotron-heading {
+  padding: 0;
+}
+.email-form {
+  margin-top: 20px;
+}
+.btn {
+  background: #22c1c3;
+  border-color: #ffffff;
+  padding: 18px 36px;
+  border-radius: 12px;
+  border: 0;
+}
+#inputEmail {
+  height: 68px;
+}
+.btn-primary.btn:hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #22c1c3;
+  border-color: #ffffff;
+}
+.header-icon {
+  width: 12px;
+  margin-bottom: 2px;
+}
+p {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+  .header-icon {
+    width: 14px;
+    margin-bottom: -1px;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+  #inputEmail {
+    height: 74px;
+  }
+}
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}

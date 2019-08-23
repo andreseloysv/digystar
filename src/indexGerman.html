@@ -25,66 +25,18 @@
       type="text/css"
     />
 
-    <style>
-      * {
-        font-family: 'Lato', sans-serif;
-        word-wrap: break-word;
-      }
-
-      html {
-        font-size: 14px;
-      }
-
-      @media (min-width: 576px) {
-        html {
-          font-size: 14px;
-        }
-      }
-
-      @media (min-width: 768px) {
-        html {
-          font-size: 18px;
-        }
-      }
-
-      @media (min-width: 992px) {
-        html {
-          font-size: 20px;
-        }
-      }
-
-      @media (min-width: 1200px) {
-        html {
-          font-size: 20px;
-        }
-      }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
     <header>
       <div class="navbar navbar-white bg-white shadow-sm">
-        <div class="container d-flex justify-content-between">
+        <div class="header-menu container d-flex justify-content-between">
           <a
             href="http://www.digystar.com"
             class="navbar-brand d-flex align-items-center"
             style="color:#333"
           >
-            DIGYSTAR
+            <img class="header-icon" src="img/dDigystarSmall.png" />IGYSTAR
           </a>
         </div>
       </div>
@@ -92,19 +44,19 @@
 
     <main role="main">
       <section class="jumbotron" style="background: white">
-        <div class="container">
+        <div class="container" style="padding: 0">
           <h1 class="jumbotron-heading">
             <strong
-              >Erlebe die schönen Momenten deiner Lieben, die nicht mehr da
+              >Erlebe schönen Momenten deiner Lieben, die nicht mehr da
               sind</strong
             >
           </h1>
           <h4 class="jumbotron-heading text-muted">
             Solange du dich an sie erinnerst, werden sie immer bei dir sein
           </h4>
-          <form method="POST" action="/">
+          <form class="email-form" method="POST" action="/">
             <div class="row justify-content-center">
-              <div class="col-md-3 mb-3">
+              <div class="col-sm-3 col-md-6 mb-3">
                 <input
                   name="user-email"
                   type="email"
@@ -115,10 +67,10 @@
                   autofocus=""
                 />
               </div>
-              <div class="col-md-3 mb-3">
+              <div class="col-sm-3 col-md-6 mb-3">
                 <button
                   type="submit"
-                  class="btn btn-primary my-2"
+                  class="btn btn-lg btn-primary my-2"
                   style="margin: 0!important;"
                 >
                   30 Tage kostenlos testen
@@ -129,42 +81,17 @@
         </div>
       </section>
 
-      <div class="py-5" style="background: #f9f9f9">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 py-2">
-              <h3>
-                Alle Erinnerungen, Fotos, Videos, Audios und Text deiner Lieben
-                an einem Ort
-              </h3>
-            </div>
-            <div class="col-lg-4 py-2">
-              <h3>
-                Private Gruppen, in denen du Erinnerungen mit Freunden und
-                Familie teilen kannst
-              </h3>
-            </div>
-            <div class="col-lg-4 py-2">
-              <h3>
-                Importiere die Erinnerungen deiner Lieben sicher aus den
-                sozialen Netzwerken wie Facebook
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container py-5">
+      <div class="container py-4">
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
               DIGYSTAR ermöglich für immer zu leben in eine digital Form
             </h2>
-            <p class="lead">
+            <p class>
               Behaltet für immer alle Erinnerungen, Videos, Bildern, Audio und
               Texten von deiner Lieben
             </p>
-            <p>
+            <p class="text-muted">
               Digitale Unsterblichkeit.
             </p>
           </div>
@@ -193,7 +120,7 @@
             <h2 class="featurette-heading">
               Teil in privaten Gruppen
             </h2>
-            <p class="lead">
+            <p class>
               Teile Bilder, Videos, Audioaufnamen und Texte von schönen
               Momenten, die dich an den Lieben erinnern, in eine private Gruppe.
             </p>
@@ -232,7 +159,7 @@
               Netzwerken wie Facebook, instagram, twitter, spotify auch von
               deine Computer und SmartPhone.
             </p>
-            <p><a href="#">Mehr Info hier</a></p>
+            <p class="text-muted"><a href="#">Mehr Info hier</a></p>
           </div>
           <div class="col-md-5">
             <svg
