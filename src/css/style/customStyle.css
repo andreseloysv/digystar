@@ -40,6 +40,7 @@ h1.jumbotron-heading {
 }
 #inputEmail {
   height: 68px;
+  font-size: 1.4rem;
 }
 .btn-primary.btn:hover,
 .btn-primary:not(:disabled):not(.disabled):active {
