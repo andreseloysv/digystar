@@ -48,8 +48,8 @@ h1.jumbotron-heading {
   border-color: #ffffff;
 }
 .header-icon {
-  width: 12px;
-  margin-bottom: 2px;
+  width: 13px;
+  margin: -1px 2px 0px 0px;
 }
 p {
   font-size: 1.2rem;
@@ -67,7 +67,7 @@ p {
   }
   .header-icon {
     width: 14px;
-    margin-bottom: -1px;
+    margin-bottom: -2px;
   }
 }
 
