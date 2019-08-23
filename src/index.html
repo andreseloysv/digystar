@@ -68,6 +68,38 @@
         user-select: none;
       }
 
+      .header-menu {
+        height: 60px;
+      }
+      h1.jumbotron-heading {
+        margin-bottom: 40px;
+      }
+      .email-form {
+        margin-top: 20px;
+      }
+      .btn {
+        background: #22c1c3;
+        /* background: linear-gradient(
+          180deg,
+          rgba(34, 193, 195, 1) 0%,
+          rgba(1, 140, 161, 1) 100%
+        ); */
+        border-color: #ffffff;
+        /* box-shadow: 1px 5px 5px -2px rgba(79, 196, 199, 0.77); */
+        padding: 18px 36px;
+        border-radius: 12px;
+      }
+      #inputEmail {
+        height: 50px;
+      }
+      .btn:hover {
+        background: #22c1c3;
+        border-color: #ffffff;
+      }
+      .header-icon {
+        width: 12px;
+        margin-bottom: 2px;
+      }
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -78,13 +110,13 @@
   <body>
     <header>
       <div class="navbar navbar-white bg-white shadow-sm">
-        <div class="container d-flex justify-content-between">
+        <div class="header-menu container d-flex justify-content-between">
           <a
             href="http://www.digystar.com"
             class="navbar-brand d-flex align-items-center"
             style="color:#333"
           >
-            DIGYSTAR
+            <img class="header-icon" src="img/dDigystarSmall.png" />IGYSTAR
           </a>
         </div>
       </div>
@@ -102,7 +134,7 @@
           <h5 class="jumbotron-heading text-muted">
             As long as you remember them, they will always be with you
           </h5>
-          <form method="POST" action="/">
+          <form class="email-form" method="POST" action="/">
             <div class="row justify-content-center">
               <div class="col-md-3 mb-3">
                 <input
@@ -118,7 +150,7 @@
               <div class="col-md-3 mb-3">
                 <button
                   type="submit"
-                  class="btn btn-primary my-2 text-center"
+                  class="btn btn-lg btn-primary my-2 text-center"
                   style="margin: 0!important;"
                 >
                   Try a month for free
