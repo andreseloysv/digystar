@@ -72,7 +72,7 @@ const server = http.createServer(async (request, response) => {
     return; // not save the request
   } else if (url === '/favicon.ico' && request.method === 'GET') {
     response.writeHead(200, { 'Content-Type': contentType });
-    fs.readFile(`src/favicon.ico`, function(error, favicon) {
+    fs.readFile(`src/img/favicon.ico`, function(error, favicon) {
       if (error) {
         urlNotFoundError(fs, response, contentType, error);
       } else {
