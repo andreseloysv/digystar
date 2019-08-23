@@ -72,7 +72,15 @@ const server = http.createServer(async (request, response) => {
     return; // not save the request
   } else if (url === '/favicon.ico' && request.method === 'GET') {
     response.writeHead(200, { 'Content-Type': contentType });
-    response.end(content, 'utf-8');
+    fs.readFile(`src/favicon.ico`, function(error, favicon) {
+      if (error) {
+        urlNotFoundError(fs, response, contentType, error);
+      } else {
+        response.writeHead(200, { 'Content-Type': contentType });
+        response.write(favicon);
+      }
+      response.end();
+    });
     return; // not save the request
   } else if (url === '/stadistics' && request.method === 'GET') {
     auth.connect(basic)(request, response, function() {
