@@ -15,3 +15,6 @@ const MIMETYPE = {
     '.svg': 'application/image/svg+xml',
     '.wasm': 'application/wasm'
   };
+  module.exports = {
+    MIMETYPE
+  };
