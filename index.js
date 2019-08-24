@@ -23,7 +23,7 @@ var basic = auth.basic(
 
 function urlNotFoundError(file, response, contentType, error) {
   if (error.code == 'ENOENT') {
-    file.readFile('404.html', function(error, content) {
+    file.readFile('src/404.html', function(error, content) {
       response.writeHead(404, { 'Content-Type': contentType });
       response.end(content, 'utf-8');
     });
