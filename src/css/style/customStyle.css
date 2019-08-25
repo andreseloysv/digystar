@@ -42,6 +42,11 @@ h1.jumbotron-heading {
   height: 68px;
   font-size: 1.4rem;
 }
+
+#submit-email{
+  margin-top: 20px
+}
+
 .btn-primary.btn:hover,
 .btn-primary:not(:disabled):not(.disabled):active {
   background-color: #22c1c3;
@@ -58,6 +63,9 @@ p {
 @media (min-width: 576px) {
   html {
     font-size: 14px;
+  }
+  #submit-email{
+    margin-top: 0px
   }
 }
 
