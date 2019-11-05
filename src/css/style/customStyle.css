@@ -25,6 +25,7 @@ header{
   height: 60px;
 }
 .jumbotron {
+  padding: 0;
   position: relative;
   margin: 0;
 }
@@ -54,6 +55,7 @@ h1.jumbotron-heading {
 }
 
 #video{
+  background: black;
   width: 100%;
   z-index: 0;
 }
