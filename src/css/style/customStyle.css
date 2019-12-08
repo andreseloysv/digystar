@@ -63,7 +63,7 @@ h1.jumbotron-heading {
 .email-submit{
   text-align: center;
   padding: 10px 20px;
-  margin: 60px auto;
+  margin: 30px auto;
 }
 
 #submit-email{
@@ -232,6 +232,11 @@ p {
     letter-spacing: -2px;
     line-height: 80px;
     font-weight: bold;
+  }
+  .email-submit{
+    text-align: center;
+    padding: 10px 20px;
+    margin: 60px auto;
   }
   #inputEmail {
     font-size: 18px;
