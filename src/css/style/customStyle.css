@@ -76,7 +76,7 @@ h1.jumbotron-heading {
 
 #video{
   background: black;
-  height: fit-content;
+  height: -webkit-fill-available;
   width: 100%;
   z-index: 0;
 }
