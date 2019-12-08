@@ -8,8 +8,15 @@ html {
 }
 
 header{
-  position: relative;
+  position: fixed;
+  width: 100%;
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: rgba(0,0,0,0.5);
   z-index: 1;
+}
+
+.logo-text{
+  font-size: 0.8rem;
 }
 
 .bd-placeholder-img {
@@ -22,7 +29,7 @@ header{
 }
 
 .header-menu {
-  height: 60px;
+  height: 52px;
 }
 .jumbotron {
   padding: 0;
@@ -46,12 +53,24 @@ h1.jumbotron-heading {
   border: 0;
 }
 #inputEmail {
-  height: 68px;
-  font-size: 1.4rem;
+  display: inline-block;
+  font-size: 18px;
+  height: 60px;
+  max-width: 400px;
+}
+
+.email-submit{
+  text-align: center;
+  padding: 10px 20px;
+  margin: 60px auto;
 }
 
 #submit-email{
-  margin-top: 20px
+  font-size: 18px;
+  padding: 16px 20px;
+  margin: 0px -24px!important;
+  vertical-align: top;
+  border-radius: 0 40px 40px 0;
 }
 
 #video{
@@ -60,11 +79,60 @@ h1.jumbotron-heading {
   z-index: 0;
 }
 
+.container-video-info{
+  background: transparent;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.video-info{
+  margin: auto;
+  text-align: center;
+}
+
+.video-info-title{
+  color: white;
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.video-info-sub-title{
+  color: white;
+  font-size: 17px;
+}
+
 .video-text{
   position: absolute;
   top: 0;
   left: 0;
   padding: 15px;
+}
+
+.btn-get-started{
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  border-radius: 30px;
+  background: #f7f7f7;
+}
+
+.btn-watch-now{
+  backdrop-filter:blur(20px);
+  color: white;
+  padding: 12px 22px;
+  font-size: 0.7rem;
+  border-radius: 22px;
+  background: #61606087;
+  transition: all 0.4s;
+}
+.btn-watch-now:hover{
+  backdrop-filter:blur(20px);
+  color: black;
+  padding: 12px 22px;
+  font-size: 0.7rem;
+  border-radius: 22px;
+  background: #f7f7f7d1;
 }
 
 .btn-primary.btn:hover,
@@ -77,15 +145,49 @@ h1.jumbotron-heading {
   margin: -1px 2px 0px 0px;
 }
 p {
+  color: #8e9aa3;
   font-size: 1.2rem;
+}
+
+.first-feature{
+  margin: 100px auto;
+}
+
+.feature-title-text{
+  font-weight: bold;
+}
+
+.coming-soon-title-text{
+  font-size: 73px;
+  letter-spacing: -2px;
+  line-height: 80px;
+  font-weight: bold;
+}
+
+.feature-sub-text{
+  margin: 20px auto auto auto;
+  max-width: 600px;
+}
+
+.place-of-honor{
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.23);
+  margin: 100px 0 300px 0;
+  width: 100%;
+}
+
+.digystar-logo{
+  text-align: center;
+  margin: auto;
+}
+
+.digystar-logo .header-icon{
+  margin-bottom: 2px;
 }
 
 @media (min-width: 576px) {
   html {
     font-size: 14px;
-  }
-  #submit-email{
-    margin-top: 0px
   }
 }
 
@@ -110,7 +212,6 @@ p {
     font-size: 20px;
   }
   #inputEmail {
-    height: 74px;
   }
 }
 @media (min-width: 768px) {

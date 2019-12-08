@@ -28,16 +28,16 @@
     <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
-    <header>
-      <div class="navbar navbar-white bg-white shadow-sm">
+    <header class="header">
+      <div class="navbar navbar-white shadow-sm py-0">
         <div class="header-menu container d-flex justify-content-between">
           <a
             href="http://www.digystar.com"
-            class="navbar-brand d-flex align-items-center"
-            style="color:#333"
+            class="navbar-brand d-flex align-items-center text-white"
           >
-            <img class="header-icon" src="img/dDigystarSmall.png" />IGYSTAR
+            <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text">IGYSTAR</span>
           </a>
+          <button type="button" class="btn btn-get-started">Get Started</button>
         </div>
       </div>
     </header>
@@ -47,46 +47,44 @@
         <video id="video" muted loop poster="img/videoPoster.png">
           <source src="video/digystar.mp4" type="video/mp4">
         </video>
-        <div class="container video-text">
-          <!--
-          <h1 class="jumbotron-heading">
-            <strong
-              >Relive beautiful moments of your loved ones that are no longer
-              here</strong
-            >
-          </h1>
-          <h5 class="jumbotron-heading text-muted">
-            As long as you remember them, they will always be with you
-          </h5>
-        -->
-        <!--
-          <form class="email-form" method="POST" action="/">
-            <div class="row justify-content-center">
-              <div class="col-12 col-sm-6 col-md-6">
-                <input
-                  name="user-email"
-                  type="email"
-                  id="inputEmail"
-                  class="form-control"
-                  placeholder="Enter your email"
-                  required=""
-                  autofocus=""
-                />
-              </div>
-              <div class="col-12 col-sm-6 col-md-6">
-                <button
-                  type="submit"
-                  class="btn btn-lg btn-primary"
-                  id="submit-email"
-                >
-                  Get Early Access
-                </button>
-              </div>
-            </div>
-          </form>
-        -->
+        <div id="video-hover" class="container-video-info d-flex align-items-center">
+          <div class="video-info">
+            <h2 class="video-info-title">Relive the best moments now</h2>
+            <p class="video-info-sub-title">As long as you remember them, they will always be with you</p>
+            <button type="button" class="btn btn-watch-now">Get Started</button>
+          </div>
         </div>
       </section>
+
+      <div class="container py-4 first-feature">
+        <div class="row featurette">
+          <div class="col-md-12">
+            <h2 class="text-center feature-title-text featurette-heading">
+              Digital immortality.
+            </h2>
+            <p class="text-center feature-sub-text">
+                Imagine the whole family and friends in a private group can honor the loved one who is no longer among us.
+            </p>
+            <img class="place-of-honor" src="img/videoPoster.png" alt="place of honor">
+          </div>
+          <div class="col-md-5">
+            <svg
+              class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+              width="500"
+              height="500"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+              role="img"
+              aria-label="Placeholder: 500x500"
+            >
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee"></rect>
+              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            </svg>
+          </div>
+        </div>
+      </div>     
 
       <div class="container py-4">
         <div class="row featurette">
@@ -181,6 +179,53 @@
           </div>
         </div>
       </div>
+
+      <div class="container py-5">
+          <div class="row featurette">
+            <div class="col-md-12">
+
+                <h2 class="text-center coming-soon-title-text featurette-heading">
+                  Coming soon.
+                </h2>
+                <p class="text-center feature-sub-text">
+                  Sign up to receive more information about DIGYSTAR.
+                </p>
+
+                <form class="email-submit" method="POST" action="/">
+                  <div class="row justify-content-center">
+                    <div class="col-12 email-container">
+                      <input
+                        name="user-email"
+                        type="email"
+                        id="inputEmail"
+                        class="form-control"
+                        placeholder="Enter your email address"
+                        required=""
+                        autofocus=""
+                      />
+                      <button
+                        type="submit"
+                        class="btn btn-lg btn-primary my-2"
+                        class="btn btn-lg btn-primary"
+                        id="submit-email"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="digystar-logo">
+                    <a
+                    href="http://www.digystar.com"
+                    class="text-white"
+                  >
+                    <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text text-dark">IGYSTAR</span>
+                  </a>
+                </div>
+            </div>
+          </div>
+        </div>
+
     </main>
 
     <footer class="py-5" style="background: #f9f9f9">

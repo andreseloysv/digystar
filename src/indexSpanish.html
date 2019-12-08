@@ -28,66 +28,63 @@
     <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
-    <header>
-      <div class="header-menu navbar navbar-white bg-white shadow-sm">
-        <div class="container d-flex justify-content-between">
-          <a
-            href="http://www.digystar.com"
-            class="navbar-brand d-flex align-items-center"
-            style="color:#333"
-          >
-            <img class="header-icon" src="img/dDigystarSmall.png" />IGYSTAR
-          </a>
+    <header class="header">
+        <div class="navbar navbar-white shadow-sm py-0">
+          <div class="header-menu container d-flex justify-content-between">
+            <a
+              href="http://www.digystar.com"
+              class="navbar-brand d-flex align-items-center text-white"
+            >
+              <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text">IGYSTAR</span>
+            </a>
+            <button type="button" class="btn btn-get-started">Empezar</button>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
     <main role="main">
       <section class="jumbotron" style="background: white">
         <video id="video" muted loop poster="img/videoPoster.png">
           <source src="video/digystar.mp4" type="video/mp4">
         </video>
-        <div class="container video-text">
-          <!--
-          <h1 class="jumbotron-heading">
-            <strong
-              >Revive bellos momentos de los seres queridos que ya no
-              están</strong
-            >
-          </h1>
-          <h4 class="jumbotron-heading text-muted">
-            Mientras los recuerdes, siempre estarán contigo
-          </h4>
-          -->
-          <!--
-          <form method="POST" action="/">
-            <div class="row justify-content-center">
-              <div class="col-12 col-sm-6 col-md-6">
-                <input
-                  name="user-email"
-                  type="email"
-                  id="inputEmail"
-                  class="form-control"
-                  placeholder="Escribe tu email"
-                  required=""
-                  autofocus=""
-                />
-              </div>
-              <div class="col-12 col-sm-6 col-md-6">
-                <button
-                  type="submit"
-                  class="btn btn-lg btn-primary my-2"
-                  class="btn btn-lg btn-primary"
-                  id="submit-email"
-                >
-                  Unete a la lista
-                </button>
-              </div>
-            </div>
-          </form>
-          -->
+        <div class="video-info">
+            <h2 class="video-info-title">Revive bellos momentos ya.</h2>
+            <p class="video-info-sub-title">Mientras los recuerdes, siempre estarán contigo</p>
+            <button type="button" class="btn btn-watch-now">Empezar</button>
+          </div>
         </div>
       </section>
+    </div>
+
+    <div class="container py-4 first-feature">
+      <div class="row featurette">
+        <div class="col-md-12">
+          <h2 class="text-center feature-title-text featurette-heading">
+              Mantén viva por siempre de forma digital
+          </h2>
+          <p class="text-center feature-sub-text">
+              Todas las memorias, fotos, videos, audios y textos de tus seres
+              queridos que ya no están entre nosotros en un solo lugar.
+          </p>
+          <img class="place-of-honor" src="img/videoPoster.png" alt="place of honor">
+        </div>
+        <div class="col-md-5">
+          <svg
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+            width="500"
+            height="500"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            role="img"
+            aria-label="Placeholder: 500x500"
+          >
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#eee"></rect>
+            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+          </svg>
+        </div>
+      </div>
     </div>
 
       <div class="container py-4">
