@@ -6,7 +6,7 @@
     "license": "MIT",
     "author": "Microsoft",
     "scripts": {
-        "start": "node index.js",
+        "start": "node index.js"
     },
     "dependencies": {
         "http-auth": "^3.2.3",

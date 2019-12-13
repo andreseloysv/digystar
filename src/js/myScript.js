@@ -19,6 +19,7 @@ function setFocusInputEmail(){
 }
 
 function gotToInputEmail(event){
+    console.log('goToInputEmail')
     smoothScroll(0, setFocusInputEmail)
 }
 
