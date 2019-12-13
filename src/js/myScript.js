@@ -8,10 +8,16 @@ getStartedTopButton.addEventListener('click', gotToInputEmail)
 videoHover.addEventListener('touchstart', handlePlayVideo)
 getStartedTopButton.addEventListener('touchstart', gotToInputEmail)
 
-function handlePlayVideo(event){
+async function handlePlayVideo(event){
     videoHover.classList.add('animated', 'fadeOut')
-    video.play()
-    video.muted = false
+    try{
+        await video.play()
+    } catch(error){
+        console.log(error);
+    }
+    finally{
+        video.muted = false
+    }
 }
 
 function setFocusInputEmail(){
