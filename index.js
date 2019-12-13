@@ -114,7 +114,36 @@ const server = http.createServer(async (request, response) => {
       }
       response.end();
     });
-  } else {
+  } else if (url.includes(`/video/`) && request.method === 'GET') {
+      const path = filePath
+      const stat = fs.statSync(path)
+      const fileSize = stat.size
+      const range = request.headers.range
+      if (range) {
+        const parts = range.replace(/bytes=/, "").split("-")
+        const start = parseInt(parts[0], 10)
+        const end = parts[1] 
+          ? parseInt(parts[1], 10)
+          : fileSize-1
+        const chunksize = (end-start)+1
+        const file = fs.createReadStream(path, {start, end})
+        const head = {
+          'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': chunksize,
+          'Content-Type': 'video/mp4',
+        }
+        response.writeHead(206, head);
+        file.pipe(response);
+      } else {
+        const head = {
+          'Content-Length': fileSize,
+          'Content-Type': 'video/mp4',
+        }
+        response.writeHead(200, head)
+        fs.createReadStream(path).pipe(response)
+      }
+    } else {
     fs.readFile(filePath, function(error, content) {
       console.log('filePath', filePath);
       if (error) {
