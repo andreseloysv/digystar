@@ -1,6 +1,7 @@
 * {
   font-family: 'Lato', sans-serif;
   word-wrap: break-word;
+  box-shadow: none;
 }
 
 html {
@@ -14,6 +15,11 @@ header{
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(0,0,0,0.5);
   z-index: 1;
+}
+
+*:focus{
+  outline: none!important;
+  box-shadow: none!important;
 }
 
 .logo-text{
@@ -53,11 +59,15 @@ h1.jumbotron-heading {
   border-radius: 12px;
   border: 0;
 }
+
 #inputEmail {
   display: inline-block;
   max-width: 190px;
   height: 45px;
   font-size: 14px;
+  box-shadow: none;
+  border: solid 1px #d2d2d2;
+  border-right: transparent;
 }
 
 .email-submit{
@@ -97,7 +107,7 @@ h1.jumbotron-heading {
 .video-info-title{
   color: white;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 38px;
   max-width: 310px;
   text-align: center;
   word-break: break-word;
@@ -118,9 +128,27 @@ h1.jumbotron-heading {
 
 .btn-get-started{
   padding: 2px 8px;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   border-radius: 30px;
   background: #f7f7f7;
+}
+
+.get-started-video-text{
+  font-size: 25px;
+  padding: 10px 50px 0 0;
+  top: -9px;
+  display: block;
+  position: relative;
+}
+
+.get-started-video-icon{
+  color: white;
+  display: block;
+  font-size: 50px;
+  top: 8px;
+  right: 15px;
+  position: absolute;
+  transition: all 0.4s;
 }
 
 .btn-watch-now{
@@ -137,10 +165,11 @@ h1.jumbotron-heading {
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   color: black;
-  padding: 12px 22px;
-  font-size: 0.7rem;
-  border-radius: 22px;
   background: #f7f7f7d1;
+}
+
+.btn-watch-now:hover .get-started-video-icon{
+  color: #131313;
 }
 
 .btn-primary.btn:hover,
@@ -223,6 +252,25 @@ p {
     font-size: 48px;
     max-width: 500px;
   }
+  .get-started-video-text{
+    font-size: 45px;
+    padding: 20px 122px 0 0;
+    top: -11px;
+    display: block;
+    position: relative;
+  }
+  .btn-get-started{
+    font-size: 0.7rem;
+  }
+  .get-started-video-icon{
+    color: white;
+    display: block;
+    font-size: 100px;
+    top: 4px;
+    right: 30px;
+    position: absolute;
+    transition: all 0.4s;
+  }
   .feature-sub-text{
     margin: 20px auto auto auto;
     max-width: 600px;
@@ -240,7 +288,7 @@ p {
   }
   #inputEmail {
     font-size: 18px;
-    height: 60px;
+    height: 59px;
     max-width: 400px;
   }
   #submit-email{

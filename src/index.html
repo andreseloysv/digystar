@@ -25,6 +25,7 @@
       type="text/css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
@@ -37,7 +38,9 @@
           >
             <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text">IGYSTAR</span>
           </a>
-          <button type="button" class="btn btn-get-started">Get Started</button>
+          <button type="button" autofocus="" id="get-started-top-button" class="btn btn-get-started">
+            Get Started
+          </button>
         </div>
       </div>
     </header>
@@ -51,7 +54,10 @@
           <div class="video-info">
             <h2 class="video-info-title">Relive the best moments now</h2>
             <p class="video-info-sub-title">As long as you remember them, they will always be with you</p>
-            <button type="button" class="btn btn-watch-now">Get Started</button>
+            <button type="button" class="btn btn-watch-now">
+              <span class="get-started-video-text">Get Started</span>
+              <i class="fa fa-play-circle fa-6 get-started-video-icon" aria-hidden="true"></i>
+            </button>
           </div>
         </div>
       </section>
@@ -201,7 +207,6 @@
                         class="form-control"
                         placeholder="Enter your email address"
                         required=""
-                        autofocus=""
                       />
                       <button
                         type="submit"
