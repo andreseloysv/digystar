@@ -6,6 +6,7 @@ const inputEmail = document.getElementById("inputEmail")
 videoHover.addEventListener('click', handlePlayVideo)
 getStartedTopButton.addEventListener('click', gotToInputEmail)
 videoHover.addEventListener('touchstart', handlePlayVideo)
+getStartedTopButton.addEventListener('touchstart', gotToInputEmail)
 
 function handlePlayVideo(event){
     videoHover.classList.add('animated', 'fadeOut')
