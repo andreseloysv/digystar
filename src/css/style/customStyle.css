@@ -18,6 +18,10 @@ header{
   transition: all 1s linear;
 }
 
+main{
+  overflow-x: hidden;
+}
+
 .header.white{
   background-color: rgba(255, 255, 255, 0.5);
   transition: all 1s linear;
@@ -28,6 +32,11 @@ header{
 }
 .header.black{
   background-color: rgba(0,0,0,0.5);
+  transition: all 1s linear;
+}
+
+.header.black .shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(255,255,255,0.1)!important;
   transition: all 1s linear;
 }
 
