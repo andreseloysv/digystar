@@ -55,3 +55,27 @@ const smoothScroll = (h, callback) => {
         callback()
     }
   }
+
+
+// holaaa
+const isInViewport = (element) => {
+    const distance = element.getBoundingClientRect();
+    return ((distance.y - 60) > 0)
+};
+
+const firstFeature = document.getElementById('first-feature');
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', function (event) {
+    window.requestAnimationFrame(changeNavBarColor);
+}, false);
+
+function changeNavBarColor(){
+    if (isInViewport(firstFeature)) {
+        header.classList.remove('white')
+        header.classList.add('black')
+    } else {
+        header.classList.add('white')
+        header.classList.remove('black')
+    }
+}

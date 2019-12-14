@@ -15,6 +15,20 @@ header{
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(0,0,0,0.5);
   z-index: 1;
+  transition: all 1s linear;
+}
+
+.header.white{
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 1s linear;
+}
+.header.white .logo-text{
+  color: black;
+  transition: color 1s linear;
+}
+.header.black{
+  background-color: rgba(0,0,0,0.5);
+  transition: all 1s linear;
 }
 
 *:focus{
@@ -24,6 +38,7 @@ header{
 
 .logo-text{
   font-size: 0.8rem;
+  transition: color 1s linear;
 }
 
 .bd-placeholder-img {
@@ -95,7 +110,7 @@ h1.jumbotron-heading {
 }
 
 .container-video-info{
-  background: transparent;
+  background: #00000094;
   position: absolute;
   top: 0;
   height: 100%;
