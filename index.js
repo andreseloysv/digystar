@@ -36,6 +36,14 @@ function urlNotFoundError(file, response, contentType, error) {
 }
 
 const server = http.createServer(async (request, response) => {
+  console.log('holaaaaaaaaaaaaaaaaa',!!request.connection.encrypted);
+
+  if(!request.url.includes('localhost') && !!request.connection.encrypted){
+    response.writeHead(301,{Location: `https://${request.headers.host}${request.url}`});
+    response.end();
+    return;
+  }
+
   const userInformation = getUserInformation(request);
   const url = request.url;
 
