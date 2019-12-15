@@ -37,12 +37,6 @@ function urlNotFoundError(file, response, contentType, error) {
 
 const server = http.createServer(async (request, response) => {
 
-if(!request.headers.referer.includes('localhost') && !request.headers.referer.includes('https')){
-  response.writeHead(301,{Location: `https://${request.headers.host}${request.url}`});
-  response.end();
-  return;
-}
-
   const userInformation = getUserInformation(request);
   const url = request.url;
 
@@ -221,7 +215,6 @@ function getUserInformation(request) {
 }
 
 const port = process.env.PORT || 1337;
-console.log('port',port);
 server.listen(port);
 
 console.log('Server running at http://localhost:%d', port);
