@@ -186,7 +186,7 @@ h1.jumbotron-heading {
   position: relative;
   font-size: 0.7rem;
   border-radius: 22px;
-  background: #61606087;
+  background: #6160603b;
   transition: all 0.4s;
 }
 .btn-watch-now:hover{
@@ -214,8 +214,8 @@ p {
   font-size: 1.2rem;
 }
 
-.first-feature{
-  margin: 100px auto;
+#first-feature{
+  margin: 50px auto;
 }
 
 .feature-title-text{
@@ -298,6 +298,9 @@ p {
     right: 30px;
     position: absolute;
     transition: all 0.4s;
+  }
+  #first-feature{
+    margin: 100px auto;
   }
   .feature-sub-text{
     margin: 20px auto auto auto;
