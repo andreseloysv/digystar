@@ -36,15 +36,13 @@ function urlNotFoundError(file, response, contentType, error) {
 }
 
 const server = http.createServer(async (request, response) => {
-console.log(request.headers);
-return;
-  /*
-  if(!request.host.includes('localhost') && !request.headers['x-forwarded-proto'] && !request.headers['x-forwarded-proto']!='https'){
+
+  if(!request.host.includes('localhost') && request.headers['x-forwarded-proto'] && request.headers['x-forwarded-proto']!='https'){
     response.writeHead(301,{Location: `https://${request.headers.host}${request.url}`});
     response.end();
     return;
   }
-*/
+
   const userInformation = getUserInformation(request);
   const url = request.url;
 
