@@ -1,6 +1,8 @@
 function getLanguageByCountry(country) {
+  // Just until the other pages are ready to rock!
+  return "";
     if (country === "DE" || country === "AT") {
-      return (indexFileName = "German");
+      return "German";
     } else if (
       country === "MX" ||
       country === "ES" ||
@@ -22,9 +24,9 @@ function getLanguageByCountry(country) {
       country === "CR" ||
       country === "NI"
     ) {
-      return (indexFileName = "Spanish");
+      return "Spanish";
     } else {
-      return (indexFileName = "");
+      return "";
     }
   }
   module.exports = {
