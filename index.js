@@ -36,8 +36,8 @@ function urlNotFoundError(file, response, contentType, error) {
 }
 
 const server = http.createServer(async (request, response) => {
-
-  if(!request.host.includes('localhost') && request.headers['x-forwarded-proto'] && request.headers['x-forwarded-proto']!='https'){
+  
+  if(!request.headers.host.includes('localhost') && request.headers['x-forwarded-proto'] && request.headers['x-forwarded-proto']!='https'){
     response.writeHead(301,{Location: `https://${request.headers.host}${request.url}`});
     response.end();
     return;
