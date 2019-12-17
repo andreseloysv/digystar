@@ -234,6 +234,98 @@ p {
   max-width: 500px;
 }
 
+.faq-feature{
+  background-color: #f7f9fc;
+  border-radius: 16px;
+  padding: 60px 20px;
+}
+
+.faq-question{
+  margin: 0 0 0 60px;
+}
+
+/*
+    Arrow Icon
+*/
+:root {
+  --faq-feature-background: #f7f9fc;
+  --background: white;
+  --iconColor: #7b1e78;
+  --iconTop: 13px;
+  --iconLeft: 13px;
+  --easing: cubic-bezier(.25,1.7,.35,.8);
+  --duration: 0.5s;
+}
+.arrow-icon {
+  background-color: var(--faq-feature-background);
+  position: relative;
+  cursor: pointer;
+}
+
+.left-bar {
+  position: absolute;
+  background-color: transparent;
+  top: var(--iconTop);
+  left: 0;
+  width: 20px;
+  height: 5px;
+  display: block;
+  transform: rotate(35deg);
+  float: right;
+  border-radius: 1px;
+}
+
+.left-bar:after {
+  content:"";
+  background-color: var(--iconColor);
+  width: 20px;
+  height: 5px;
+  display: block;
+  float: right;
+  border-radius: 3px 5px 5px 3px;
+  transition: all var(--duration) var(--easing);
+  z-index: -1;
+}
+
+.right-bar {
+  position: absolute;
+  background-color: transparent;
+  top: var(--iconTop);
+  left: var(--iconLeft);
+  width: 20px;
+  height: 5px;
+  display: block;
+  transform: rotate(-35deg);
+  float: right;
+  border-radius: 1px;
+}
+.right-bar:after {
+  content:"";
+  background-color: var(--iconColor);
+  width: 20px;
+  height: 5px;
+  display: block;
+  float: right;
+  border-radius: 5px 3px 3px 5px;
+  transition: all var(--duration) var(--easing);
+  z-index: -1;
+}
+
+.open .left-bar:after {
+  transform-origin: center center;
+  transform: rotate(-34deg);
+}
+.open .right-bar:after {
+  transform-origin: center center;
+  transform: rotate(34deg);
+}
+
+/* 
+
+End Arrow Icon
+
+*/
+
 .place-of-honor{
   border-radius: 10px;
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.23);
@@ -249,6 +341,37 @@ p {
 .digystar-logo .header-icon{
   margin-bottom: 2px;
 }
+
+/* Start Acordion */
+
+.accordion {
+  background-color: #f7f9fc;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  opacity: 0;
+  background-color: #f7f9fc;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.25s ease-out;
+}
+
+.active.panel {
+  max-height: 300;
+  opacity: 1;
+  transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+}
+
+/*   End Acordions  */ 
 
 @media (min-width: 576px) {
   html {
