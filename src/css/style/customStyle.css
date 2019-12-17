@@ -235,7 +235,7 @@ p {
 }
 
 .place-of-honor{
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.23);
   margin: 100px 0 300px 0;
   width: 100%;
@@ -305,6 +305,9 @@ p {
   .feature-sub-text{
     margin: 20px auto auto auto;
     max-width: 600px;
+  }
+  .place-of-honor{
+    border-radius: 20px;
   }
   .coming-soon-title-text{
     font-size: 73px;
