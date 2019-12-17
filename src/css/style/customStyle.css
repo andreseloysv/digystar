@@ -214,8 +214,8 @@ p {
   font-size: 1.2rem;
 }
 
-#first-feature{
-  margin: 50px auto;
+.feature-container{
+  padding: 50px 0;
 }
 
 .feature-title-text{
@@ -299,8 +299,8 @@ p {
     position: absolute;
     transition: all 0.4s;
   }
-  #first-feature{
-    margin: 100px auto;
+  .feature-container{
+    padding: 300px 0;
   }
   .feature-sub-text{
     margin: 20px auto auto auto;

@@ -60,7 +60,7 @@ const smoothScroll = (h, callback) => {
 // holaaa
 const isInViewport = (element) => {
     const distance = element.getBoundingClientRect();
-    return ((distance.y - 60) > 0)
+    return ((distance.y - 80) > 0)
 };
 
 const firstFeature = document.getElementById('first-feature');
