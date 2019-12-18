@@ -234,6 +234,17 @@ p {
   max-width: 500px;
 }
 
+.socialnetworkimg{
+  margin-top: 25px;
+  width: 80%;
+}
+
+/*
+
+  FAQ Section
+
+*/
+
 .faq-feature{
   background-color: #f7f9fc;
   border-radius: 16px;
@@ -282,7 +293,7 @@ p {
   height: 5px;
   display: block;
   float: right;
-  border-radius: 3px 5px 5px 3px;
+  border-radius: 6px 5px 5px 6px;
   transition: all var(--duration) var(--easing);
   z-index: -1;
 }
@@ -306,7 +317,7 @@ p {
   height: 5px;
   display: block;
   float: right;
-  border-radius: 5px 3px 3px 5px;
+  border-radius: 5px 6px 6px 5px;
   transition: all var(--duration) var(--easing);
   z-index: -1;
 }
@@ -496,6 +507,9 @@ End Arrow Icon
   }
   .place-of-honor{
     border-radius: 20px;
+  }
+  .socialnetworkimg{
+    margin-top: 0px;
   }
   .coming-soon-title-text{
     font-size: 73px;
