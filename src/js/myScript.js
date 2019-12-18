@@ -43,6 +43,25 @@ if (firstFeature) {
 //
 // -------------
 //
+// Go to input email section
+
+const getStartedTopButton = document.getElementById("get-started-top-button")
+const inputEmail = document.getElementById("inputEmail")
+
+const setFocusInputEmail = () => {
+    inputEmail.focus();
+}
+
+const gotToInputEmail = (event) => {
+    smoothScroll(0, setFocusInputEmail)
+}
+
+addClickAndTouchEventListener(getStartedTopButton, gotToInputEmail)
+
+// End of the smooth scroll section
+//
+// -------------
+//
 // Change Nav Bar Color
 
 const changeNavBarColor = (element) => {
@@ -64,8 +83,6 @@ const changeNavBarColor = (element) => {
 const video = document.getElementById("video")
 if (video) {
     const videoHover = document.getElementById("video-hover")
-    const getStartedTopButton = document.getElementById("get-started-top-button")
-    const inputEmail = document.getElementById("inputEmail")
 
     const handlePlayVideo = async (event) => {
         videoHover.classList.add('animated', 'fadeOut')
@@ -77,14 +94,6 @@ if (video) {
         finally{
             video.muted = false
         }
-    }
-
-    const setFocusInputEmail = () => {
-        inputEmail.focus();
-    }
-
-    const gotToInputEmail = (event) => {
-        smoothScroll(0, setFocusInputEmail)
     }
 
     video.addEventListener('click', event => {
@@ -99,7 +108,6 @@ if (video) {
     }
 
     addClickAndTouchEventListener(videoHover, handlePlayVideo)
-    addClickAndTouchEventListener(getStartedTopButton, gotToInputEmail)
     video.addEventListener('ended',videoEnd)
 }
 // End of the vide section
