@@ -373,6 +373,71 @@ End Arrow Icon
 
 /*   End Acordions  */ 
 
+/*
+
+  Footer
+
+*/
+
+.footer-menu-link{
+  color: #8e9aa3;
+}
+
+.footer-menu-link:hover{
+  color: #8e9aa3;
+}
+
+/*   End Footer  */ 
+
+/*
+
+  Team Page
+
+*/
+#team-feature{
+  margin-top: 100px;
+}
+.team-container{
+  display: flex;
+  flex-flow: row;
+  padding: 0;
+  border-radius: 4px;
+  margin: 80px 0 100px 0;
+  height: 300px;
+  width: auto;
+  justify-content: flex-end;
+}
+.team-article{
+  margin-right: 4px;
+  margin-bottom: 8px;
+  min-width: 30px;
+  text-align: center;
+  color: white;
+  border-radius: 4px;
+  padding: 4px;
+  flex: 1 1 80px;
+  order: 0;
+}
+.team-container .team-article .team-img{
+  border-radius: 50%;
+  width: 100%;
+  max-width: 160px;
+  border: 1px #eaeaea solid;
+  box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.75);
+}
+.team-text-container{
+  color: black;
+  margin: 25px 0 80px 0;
+}
+.team-text{
+  color: black;
+}
+/*
+
+  end Team section
+
+*/
+
 @media (min-width: 576px) {
   html {
     font-size: 14px;

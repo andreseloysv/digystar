@@ -33,12 +33,20 @@ const isInViewport = (element) => {
 const firstFeature = document.getElementById('first-feature');
 const header = document.getElementById('header');
 
-window.addEventListener('scroll', (event) => {
-    window.requestAnimationFrame(changeNavBarColor);
-}, false);
+if (firstFeature) {
+    window.addEventListener('scroll', (event) => {
+        window.requestAnimationFrame(changeNavBarColor.bind(undefined, firstFeature));
+    }, false);
+}
 
-const changeNavBarColor = () => {
-    if (isInViewport(firstFeature)) {
+// End of the smooth scroll section
+//
+// -------------
+//
+// Change Nav Bar Color
+
+const changeNavBarColor = (element) => {
+    if (isInViewport(element)) {
         header.classList.remove('white')
         header.classList.add('black')
     } else {
@@ -54,45 +62,46 @@ const changeNavBarColor = () => {
 // Video section
 
 const video = document.getElementById("video")
-const videoHover = document.getElementById("video-hover")
-const getStartedTopButton = document.getElementById("get-started-top-button")
-const inputEmail = document.getElementById("inputEmail")
+if (video) {
+    const videoHover = document.getElementById("video-hover")
+    const getStartedTopButton = document.getElementById("get-started-top-button")
+    const inputEmail = document.getElementById("inputEmail")
 
-const handlePlayVideo = async (event) => {
-    videoHover.classList.add('animated', 'fadeOut')
-    try{
-        await video.play()
-    } catch(error){
-        console.log(error);
+    const handlePlayVideo = async (event) => {
+        videoHover.classList.add('animated', 'fadeOut')
+        try{
+            await video.play()
+        } catch(error){
+            console.log(error);
+        }
+        finally{
+            video.muted = false
+        }
     }
-    finally{
+
+    const setFocusInputEmail = () => {
+        inputEmail.focus();
+    }
+
+    const gotToInputEmail = (event) => {
+        smoothScroll(0, setFocusInputEmail)
+    }
+
+    video.addEventListener('click', event => {
+        video.play()
         video.muted = false
+    });
+
+    const videoEnd = (event) => {
+        videoHover.classList.remove("fadeOut")
+        videoHover.classList.add('animated', 'fadeIn')
+        gotToInputEmail()
     }
+
+    addClickAndTouchEventListener(videoHover, handlePlayVideo)
+    addClickAndTouchEventListener(getStartedTopButton, gotToInputEmail)
+    video.addEventListener('ended',videoEnd)
 }
-
-const setFocusInputEmail = () => {
-    inputEmail.focus();
-}
-
-const gotToInputEmail = (event) => {
-    smoothScroll(0, setFocusInputEmail)
-}
-
-video.addEventListener('click', event => {
-    video.play()
-    video.muted = false
-});
-
-const videoEnd = (event) => {
-    videoHover.classList.remove("fadeOut")
-    videoHover.classList.add('animated', 'fadeIn')
-    gotToInputEmail()
-}
-
-addClickAndTouchEventListener(videoHover, handlePlayVideo)
-addClickAndTouchEventListener(getStartedTopButton, gotToInputEmail)
-video.addEventListener('ended',videoEnd)
-
 // End of the vide section
 //
 // -----------------
@@ -114,3 +123,12 @@ Array.prototype.forEach.call(accordions, (accordion) => {
 })
 
 // End of the accordion section
+//
+// -----------------
+//
+// Team Page
+const teamFeature = document.getElementById("team-feature");
+if (teamFeature) {
+    const header = document.getElementById("header");
+    changeNavBarColor(header);
+}
