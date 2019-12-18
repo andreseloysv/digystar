@@ -12,13 +12,17 @@ const addClickAndTouchEventListener = (element, eventHandlerFunction) => {
 //
 // Smooth Scroll section
 
-const smoothScroll = (h, callback) => {
-    let i = h || 0;
+const smoothScroll = (h, toElement, callback) => {
+    const windowScrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    const toElementPosition = toElement.offsetTop;
     const step = document.body.scrollHeight/100;
-    if (i < document.body.scrollHeight) {
+
+    let i = h || windowScrollPosition;
+
+    if (i < (toElementPosition)) {
       setTimeout(() => {
         window.scrollTo(0, i);
-        smoothScroll(i + step, callback);
+        smoothScroll(i + step, toElement, callback);
       }, 10);
     } else{
         callback()
@@ -39,6 +43,13 @@ if (firstFeature) {
     }, false);
 }
 
+const gotToElementById = (elementId) => {
+    const element = document.getElementById(elementId)
+    if (element) {
+        smoothScroll(undefined, element, ()=>{})
+    }
+}
+
 // End of the smooth scroll section
 //
 // -------------
@@ -47,13 +58,14 @@ if (firstFeature) {
 
 const getStartedTopButton = document.getElementById("get-started-top-button")
 const inputEmail = document.getElementById("inputEmail")
+const containerInputEmail = document.getElementById("containerInputEmail")
 
 const setFocusInputEmail = () => {
     inputEmail.focus();
 }
 
 const gotToInputEmail = (event) => {
-    smoothScroll(0, setFocusInputEmail)
+    smoothScroll(undefined, containerInputEmail, setFocusInputEmail)
 }
 
 addClickAndTouchEventListener(getStartedTopButton, gotToInputEmail)
