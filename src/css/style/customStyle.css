@@ -221,6 +221,41 @@ h1.jumbotron-heading {
   padding: 15px;
 }
 
+#icon-smart-phone{
+  backdrop-filter: saturate(180%) blur(60px);
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#icon-smart-phone.active{
+  display: block;
+}
+
+.icon-smart-phone-rotation{
+  animation: rotate-smartphone 6s infinite;
+  bottom: 65;
+  position: absolute;
+  right: calc(50% - 100px);
+  transform: rotate(33deg);
+  filter: brightness(2);
+}
+
+.icon-smart-phone-text{
+  color: white;
+  bottom: 15;
+  position: absolute;
+  right: calc(50% - 94px);
+}
+
+@keyframes rotate-smartphone {
+  from { transform: rotate(33deg); }
+  70%, 100% { transform: rotate(136deg); }
+}
+
 .btn-get-started{
   padding: 2px 8px;
   font-size: 0.8rem;

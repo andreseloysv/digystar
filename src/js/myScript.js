@@ -95,10 +95,27 @@ const changeNavBarColor = (element) => {
 const video = document.getElementById("video")
 if (video) {
     const videoHover = document.getElementById("video-hover")
+    const iconRotateSmartPhone = document.getElementById("icon-smart-phone")
 
+    
+    const showIconSmartphoneRotation = () => {
+        if (window.innerHeight > window.innerWidth){
+            iconRotateSmartPhone.classList.add('active')
+        } else {
+            iconRotateSmartPhone.classList.remove('active')
+        }
+    }
+
+    const windowsResize = () => {
+        window.requestAnimationFrame(showIconSmartphoneRotation);
+    }
+
+    window.addEventListener("resize", windowsResize);
+    showIconSmartphoneRotation();
+    
     const handlePlayVideo = async (event) => {
         videoHover.classList.add('animated', 'fadeOut')
-        try{
+        try {
             await video.play()
         } catch(error){
             console.log(error);
