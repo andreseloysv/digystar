@@ -223,6 +223,7 @@ h1.jumbotron-heading {
 
 #icon-smart-phone{
   backdrop-filter: saturate(180%) blur(60px);
+  -webkit-backdrop-filter: saturate(180%) blur(60px);
   display: none;
   position: absolute;
   top: 0;
