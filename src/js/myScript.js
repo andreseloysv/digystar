@@ -15,15 +15,14 @@ const addClickAndTouchEventListener = (element, eventHandlerFunction) => {
 const smoothScroll = (h, toElement, callback) => {
     const windowScrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
     const toElementPosition = toElement.offsetTop;
-    const step = document.body.scrollHeight/100;
+    const step = 80;
 
     let i = h || windowScrollPosition;
-
+    
     if (Math.abs(i - toElementPosition) < 80) {
-        window.scrollTo(0, toElementPosition - 60);
-        return callback()
+        window.scrollTo(0, toElementPosition - 80);
+        return callback && callback();
     }
-
     if (i < toElementPosition) {
       setTimeout(() => {
         window.scrollTo(0, i);
@@ -54,8 +53,9 @@ if (firstFeature) {
 const gotToElementById = (elementId) => {
     const element = document.getElementById(elementId)
     if (element) {
-        smoothScroll(undefined, element, ()=>{})
+        smoothScroll(undefined, element, undefined)
     }
+    return false;
 }
 
 // End of the smooth scroll section
@@ -107,7 +107,7 @@ if (video) {
 
     
     const showIconSmartphoneRotation = () => {
-        if (window.innerHeight > window.innerWidth){
+        if (window.innerHeight > window.innerWidth) {
             iconRotateSmartPhone.classList.add('active')
         } else {
             iconRotateSmartPhone.classList.remove('active')
@@ -147,6 +147,7 @@ if (video) {
     addClickAndTouchEventListener(videoHover, handlePlayVideo)
     video.addEventListener('ended',videoEnd)
 }
+
 // End of the vide section
 //
 // -----------------
@@ -172,6 +173,7 @@ Array.prototype.forEach.call(accordions, (accordion) => {
 // -----------------
 //
 // Team Page
+
 const teamFeature = document.getElementById("team-feature");
 if (teamFeature) {
     const header = document.getElementById("header");
