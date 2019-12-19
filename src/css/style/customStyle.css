@@ -540,6 +540,9 @@ End Arrow Icon
   html {
     font-size: 20px;
   }
+  .navbar-link-container{
+    display: none;
+  }
   .video-info-title{
     font-size: 48px;
     max-width: 500px;
