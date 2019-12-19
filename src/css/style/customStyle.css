@@ -45,6 +45,9 @@ main{
 Nav Bar
 
 */
+.navbar-link-container{
+  display: none;
+}
 .navbar-link-container a{
   cursor: pointer;
   font-size: 16px;
@@ -541,7 +544,7 @@ End Arrow Icon
     font-size: 20px;
   }
   .navbar-link-container{
-    display: none;
+    display: block;
   }
   .video-info-title{
     font-size: 48px;
