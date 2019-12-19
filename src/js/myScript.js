@@ -19,13 +19,21 @@ const smoothScroll = (h, toElement, callback) => {
 
     let i = h || windowScrollPosition;
 
-    if (i < (toElementPosition)) {
+    if (Math.abs(i - toElementPosition) < 80) {
+        window.scrollTo(0, toElementPosition - 60);
+        return callback()
+    }
+
+    if (i < toElementPosition) {
       setTimeout(() => {
         window.scrollTo(0, i);
         smoothScroll(i + step, toElement, callback);
       }, 10);
-    } else{
-        callback()
+    } else if (i > toElementPosition) {
+        setTimeout(() => {
+            window.scrollTo(0, i);
+            smoothScroll(i - step, toElement, callback);
+        }, 10);
     }
 }
 
