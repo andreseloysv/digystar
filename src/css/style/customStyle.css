@@ -238,7 +238,7 @@ h1.jumbotron-heading {
 
 .icon-smart-phone-rotation{
   animation: rotate-smartphone 6s infinite;
-  bottom: 65;
+  bottom: 30%;
   position: absolute;
   right: calc(50% - 100px);
   transform: rotate(33deg);
@@ -247,9 +247,10 @@ h1.jumbotron-heading {
 
 .icon-smart-phone-text{
   color: white;
-  bottom: 15;
   position: absolute;
-  right: calc(50% - 94px);
+  bottom: 15%;
+  width: 100%;
+  text-align: center;
 }
 
 @keyframes rotate-smartphone {

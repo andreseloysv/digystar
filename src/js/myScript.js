@@ -19,8 +19,8 @@ const smoothScroll = (h, toElement, callback) => {
 
     let i = h || windowScrollPosition;
     
-    if (Math.abs(i - toElementPosition) < 80) {
-        window.scrollTo(0, toElementPosition - 80);
+    if (Math.abs(i - toElementPosition) < step) {
+        window.scrollTo(0, toElementPosition - step);
         return callback && callback();
     }
     if (i < toElementPosition) {
