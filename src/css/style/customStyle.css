@@ -203,10 +203,11 @@ h1.jumbotron-heading {
   color: white;
   font-weight: bold;
   font-size: 38px;
-  max-width: 310px;
+  max-width: 350px;
   text-align: center;
   word-break: break-word;
   margin: auto;
+  padding: 20px 0 0 0;
 }
 
 .video-info-sub-title{
@@ -251,6 +252,7 @@ h1.jumbotron-heading {
   bottom: 15%;
   width: 100%;
   text-align: center;
+  font-weight: bold;
 }
 
 @keyframes rotate-smartphone {
@@ -341,7 +343,8 @@ p {
 
 .socialnetworkimg{
   margin-top: 25px;
-  width: 80%;
+  width: 100%;
+  max-width: 380px;
 }
 
 /*
@@ -442,10 +445,17 @@ End Arrow Icon
 
 */
 
+.family-img{
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px 4px rgba(204, 204, 204, 0.39);
+  padding: 10px;
+  width: 100%;
+}
+
 .place-of-honor{
   border-radius: 10px;
   box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.23);
-  margin: 100px 0 300px 0;
+  margin: 100px 0 0 0;
   width: 100%;
 }
 
@@ -607,7 +617,10 @@ End Arrow Icon
     transition: all 0.4s;
   }
   .feature-container{
-    padding: 300px 0;
+    padding: 300px 0 0 0;
+  }
+  #containerInputEmail{
+    padding: 300px 0 200px 0;
   }
   .feature-sub-text{
     margin: 20px auto auto auto;
