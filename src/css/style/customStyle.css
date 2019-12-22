@@ -22,6 +22,11 @@ main{
   overflow-x: hidden;
 }
 
+.row-container{
+  padding: 0 30px;
+  text-align: center;
+}
+
 .header.white{
   background-color: rgba(255, 255, 255, 0.5);
   transition: all 1s linear;
@@ -322,7 +327,7 @@ p {
 }
 
 .feature-container{
-  padding: 50px 0;
+  padding: 100px 0 0 0;
 }
 
 .feature-title-text{
@@ -450,6 +455,7 @@ End Arrow Icon
   border-radius: 20px;
   box-shadow: 0px 0px 12px 4px rgba(204, 204, 204, 0.39);
   padding: 10px;
+  margin-top: 50px;
   width: 100%;
 }
 
@@ -594,6 +600,9 @@ End Arrow Icon
   .navbar-link-container{
     display: block;
   }
+  .row-container{
+    padding: 0;
+  }
   .video-info-title{
     font-size: 48px;
     max-width: 500px;
@@ -633,6 +642,10 @@ End Arrow Icon
   .socialnetworkimg{
     margin-top: 0px;
   }
+  .family-img{
+    margin-top: 0px;
+  }
+  
   .coming-soon-title-text{
     font-size: 73px;
     letter-spacing: -2px;
