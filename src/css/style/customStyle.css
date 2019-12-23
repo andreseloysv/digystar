@@ -332,6 +332,13 @@ p {
 
 .feature-title-text{
   font-weight: bold;
+  max-width: 100%;
+  margin: auto;
+}
+
+.feature-text{
+  max-width: 100%;
+  margin: auto;
 }
 
 .coming-soon-title-text{
@@ -634,6 +641,13 @@ End Arrow Icon
   }
   #containerInputEmail{
     padding: 200px 0 200px 0;
+  }
+  .feature-title-text{
+    max-width: 80%;
+  }
+  
+  .feature-text{
+    max-width: 80%;
   }
   .feature-sub-text{
     margin: 20px auto auto auto;
