@@ -15,7 +15,7 @@ header{
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   background-color: rgba(0,0,0,0.5);
   z-index: 1;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 main{
@@ -29,20 +29,20 @@ main{
 
 .header.white{
   background-color: rgba(255, 255, 255, 0.5);
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 .header.white .logo-text{
   color: black;
-  transition: color 1s linear;
+  transition: color 0.5s linear;
 }
 .header.black{
   background-color: rgba(0,0,0,0.5);
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .header.black .shadow-sm {
   box-shadow: 0 .125rem .25rem rgba(255,255,255,0.1)!important;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 /*
@@ -89,22 +89,22 @@ Nav Bar
 
 .black .navbar-link-container a{
   color: rgb(241, 241, 241);
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .black .navbar-link-container a:hover{
   color: white;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .white .navbar-link-container a{
   color: #717171;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .white .navbar-link-container a:hover{
   color: black;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 /*
@@ -120,7 +120,7 @@ End Nav Bar
 
 .logo-text{
   font-size: 0.8rem;
-  transition: color 1s linear;
+  transition: color 0.5s linear;
 }
 
 .bd-placeholder-img {
