@@ -1,9 +1,8 @@
 function getLanguageByCountry(country) {
   // Just until the other pages are ready to rock!
-  return "";
-    if (country === "DE" || country === "AT") {
+    /*if (country === "DE" || country === "AT") {
       return "German";
-    } else if (
+    } else*/ if (
       country === "MX" ||
       country === "ES" ||
       country === "CO" ||

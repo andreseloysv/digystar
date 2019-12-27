@@ -1,14 +1,14 @@
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="" />
+    <meta name="description" content="Connect now memories of departed loved ones" />
     <meta
       name="author"
-      content="Andres Eloy Sanchez Vargas, Jesus Sanchez, Luis Carvajal,"
+      content="Andres Eloy Sanchez Vargas, Jesus Sanchez, Luis Carvajal"
     />
     <title>DIGYSTAR</title>
 
@@ -24,166 +24,295 @@
       rel="stylesheet"
       type="text/css"
     />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style/customStyle.css" type="text/css" />
   </head>
   <body>
-    <header class="header">
-        <div class="navbar navbar-white shadow-sm py-0">
-          <div class="header-menu container d-flex justify-content-between">
-            <a
-              href="http://www.digystar.com"
-              class="navbar-brand d-flex align-items-center text-white"
-            >
-              <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text">IGYSTAR</span>
-            </a>
-            <button type="button" class="btn btn-get-started">Empezar</button>
+    <header class="header black" id="header">
+      <div class="navbar navbar-white shadow-sm py-0">
+        <div class="header-menu container d-flex justify-content-between">
+          <a
+            href="https://www.digystar.com"
+            class="navbar-brand d-flex align-items-center text-white"
+          >
+            <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text">IGYSTAR</span>
+          </a>
+          <div class="navbar-link-container">
+            <a href="#">Inicio</a>
+            <a href="#">Sobre nosotros</a>
+            <a href="#" onclick="return gotToElementById('faq')" >FAQ</a>
+            <a href="/team.html">Team</a>
           </div>
+          <button type="button" autofocus="" id="get-started-top-button" class="btn btn-get-started">
+            Registrate
+          </button>
         </div>
-      </header>
+      </div>
+    </header>
 
     <main role="main">
       <section class="jumbotron" style="background: white">
-        <video id="video" muted loop poster="img/videoPoster.png">
-          <source src="video/digystarhd.mp4" type="video/mp4">
+        <video playsinline="true" id="video" preload="true" muted poster="img/videoPoster.png" src="/video/digystarhd.mp4">
         </video>
-        <div class="video-info">
-            <h2 class="video-info-title">Revive bellos momentos ya.</h2>
-            <p class="video-info-sub-title">Mientras los recuerdes, siempre estarán contigo</p>
-            <button type="button" class="btn btn-watch-now">Empezar</button>
+        <div id="video-hover" class="container-video-info d-flex align-items-center">
+          <div class="video-info">
+            <h2 class="video-info-title">Conectate ahora con las memorias de los seres queridos que ya partieron</h2>
+            <p class="video-info-sub-title">Mientras los recuerdes nunca desapareceran</p>
+            <button type="button" class="btn btn-watch-now">
+              <span class="get-started-video-text">Ver video</span>
+              <i class="fa fa-play-circle fa-6 get-started-video-icon" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div id="icon-smart-phone">
+            <img class="icon-smart-phone-rotation" src="img/smartphonerotation.png" alt="smart phone rotation" />
+            <span class="icon-smart-phone-text">Por favor gira el telefono</span>
           </div>
         </div>
       </section>
-    </div>
 
-    <div class="container py-4 first-feature">
-      <div class="row >
-        <div class="col-md-12">
-          <h2 class="text-center feature-title-text ">
-              Mantén viva por siempre de forma digital
-          </h2>
-          <p class="text-center feature-sub-text">
-              Todas las memorias, fotos, videos, audios y textos de tus seres
-              queridos que ya no están entre nosotros en un solo lugar.
-          </p>
-          <img class="place-of-honor" src="img/videoPoster.png" alt="place of honor">
+      <div class="container feature-container" id="first-feature">
+        <div class="row ">
+          <div class="col-md-5 order-md-2 row-container">
+            <h2 class="feature-title-text">
+              Permiteles ser parte de la familia por siempre
+            </h2>
+            <p class="feature-text">
+              Cuentale a todos la historia de su vida con tu telefono, tablet u ordenador
+            </p>
         </div>
-        <div class="col-md-5">
-          <svg
-            class="bd-placeholder-img bd-placeholder-img-lg  img-fluid mx-auto"
-            width="500"
-            height="500"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            role="img"
-            aria-label="Placeholder: 500x500"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee"></rect>
-            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-          </svg>
+        <div class="col-md-7 text-center row-container">
+          <img class="family-img" src="img/family.png" alt="family looking at digystar">
         </div>
       </div>
-    </div>
 
-      <div class="container py-4">
-        <div class="row >
-          <div class="col-md-7">
-            <h2 class="">
-              Inmortalidad Digital
+      <div class="container feature-container">
+        <div class="row ">
+          <div class="col-md-7 row-container">
+            <h2 class="feature-title-text">
+              Rescata su perfil de las redes sociales
             </h2>
-            <p class>
-              <strong>Mantén viva por siempre de forma digital</strong>
-              Todas las memorias, fotos, videos, audios y textos de tus seres
-              queridos que ya no están entre nosotros en un solo lugar
+            <p class="feature-text">
+              <strong>Haz que su perfil fluya hacia la seguridad y privacidad.</strong><br>
+              Asi como todas sus memorias, fotos, videos, audios, textos y mucho mas.
             </p>
           </div>
-          <div class="col-md-5">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg  img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-              role="img"
-              aria-label="Placeholder: 500x500"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+          <div class="col-md-5 text-center row-container">
+            <img class="socialnetworkimg" src="img/socialnetworkswithoutbg.png" alt="import all the information from the social networks">
+          </div>
+        </div>
+      </div>  
+
+      <div class="container feature-container">
+        <div class="row ">
+          <div class="col-md-12 row-container">
+            <h2 class="text-center feature-title-text">
+              Ahora desde el hogar podremos honrar al ser amado
+            </h2>
+            <p class="text-center feature-sub-text feature-text">
+                Ya la distancia y el tiempo no son un impedimento para honrar al ser amado con la familia y amigos o si lo prefieres de forma individual.
+            </p>
+            <img class="place-of-honor" src="img/videoPoster.png" alt="place of honor">
+          </div>
+        </div>
+      </div>
+
+      <div class="container feature-container">
+        <div class="row faq-feature">
+          <div class="col-md-12" id="faq">
+            <h2 class="feature-title-text">
+              Preguntas <br>
+              Frecuentes
+            </h2>
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Cuando estará la plataforma Digystar disponible? </span>
+            </button>
+            <div class="panel">
+              <p>Primer semestre 2020.</p>
+            </div>
+            
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Que es la inmortalidad digital? </span>
+            </button>
+            <div class="panel">
+              <p>La inmortalidad digital es el concepto de almacenamiento de la personalidad de una persona en un medio más durable, tal como un computador.  </p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Quien puede asesar a la plataforma Digystar y compartir las memorias? </span>
+            </button>
+            <div class="panel">
+              <p>Usted siempre tendrá el control de quien puede ver, editar y compartir la información.  </p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Cuál es la diferencia entre Digystar y las redes sociales, tales como Facebook?</span>
+            </button>
+            <div class="panel">
+              <p>Nosotros tenemos como objetivo la inmortalidad digital.  <br>
+                Nosotros no usaremos la información suministrada por usted para propósitos de publicidad.</p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Cuál es la diferencia entre Digystar y el resto de los proveedores de servicios de almacenamiento en la nube, como por ejemplo Dropbox o Google Drive? </span>
+            </button>
+            <div class="panel">
+              <p>En nuestra plataforma usted podrá revivir las memorias de su ser amado por siempre y no solo almacenar la información.</p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Puedo importar toda la información de las redes sociales a Digystar? </span>
+            </button>
+            <div class="panel">
+              <p>Sí, es muy simple.</p>
+            </div>
+            
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Donde estarán localizados los servidores de Digystar? </span>
+            </button>
+            <div class="panel">
+              <p>Todos nuestros servidores estan en la Unión Europea.<br>
+                Esto significa que todos los datos del usuario están protegidos por estrictas leyes europeas de privacidad.</p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Por que solicitan mi correo electronico?</span>
+            </button>
+            <div class="panel">
+              <p>Queremos que sea de los primeros en enterarse el día en que la plataforma estará lista.<br>
+                Su dirección de correo electrónico no será usada para ningún otro propósito no relacionado con nuestro producto.</p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Como puedo solicitar que borren mi correo electronico?</span>
+            </button>
+            <div class="panel">
+              <p>Escribenos a info@digystar.com y lo borraremos inmediatamente<br>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">No logro encontrar respuestas a mi pregunta.</span>
+            </button>
+            <div class="panel">
+              <p>Usted puede contactarnos en:
+                <ul>
+                  <li>Instagram: @digystar</li>
+                  <li>Twitter: @digystar</li>
+                  <li>E-Mail: jesus@digystar.com</li>
+                </ul>
+              </p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Puedo como inversionista participar en Digystar? </span>
+            </button>
+            <div class="panel">
+              <p>Si, usted puede contactarnos a la siguiente dirección:   jesus@digystar.com </p>
+            </div>
+
+            <button class="accordion">
+              <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+              </a>
+              <span class="faq-question">Puedo como negocio colaborativo participar en Digystar? </span>
+            </button>
+            <div class="panel">
+              <p>Si, usted puede contactarnos a la siguiente dirección:   jesus@digystar.com </p>
+            </div>
+
           </div>
         </div>
       </div>
 
       <div class="container py-5">
-        <div class="row >
-          <div class="col-md-7 order-md-2">
-            <h2 class="">
-              Comparte en un grupo privado las memorias con amigos y familiares
-            </h2>
-            <p class>
-              Contribuye aportando videos, fotos, audios y textos de los bellos
-              momentos que cada uno del grupo ha vivido con el ser querido que
-              ya no está entre nosotros.
-            </p>
-            <p>
-              La vida es la suma de los bellos momentos que disfrutamos con
-              familiares y amigos.
-            </p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg  img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-              role="img"
-              aria-label="Placeholder: 500x500"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
-          </div>
-        </div>
-      </div>
+          <div class="row ">
+            <div class="col-md-12" id="containerInputEmail">
 
-      <div class="container py-5">
-        <div class="row >
-          <div class="col-md-7">
-            <h2 class="">
-              Importa de forma segura las memorias de redes sociales
-            </h2>
-            <p class="lead">
-              Como facebook, instagram, twitter, spotify asi como tambien de tu
-              computador personal o teléfono inteligente de forma segura para
-              incorporarlo a las memorias.
-            </p>
-            <p class="text-muted">Haz click aqui para saber más</p>
-          </div>
-          <div class="col-md-5">
-            <svg
-              class="bd-placeholder-img bd-placeholder-img-lg  img-fluid mx-auto"
-              width="500"
-              height="500"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-              role="img"
-              aria-label="Placeholder: 500x500"
-            >
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee"></rect>
-              <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+                <h2 class="text-center coming-soon-title-text">
+                  Proximamente.
+                </h2>
+                <p class="text-center feature-sub-text">
+                  Registrate para recibir mas informacion sobre DIGYSTAR.
+                </p>
+
+                <form class="email-submit" method="POST" action="/">
+                  <div class="row justify-content-center">
+                    <div class="col-12 email-container">
+                      <input
+                        name="user-email"
+                        type="email"
+                        id="inputEmail"
+                        class="form-control"
+                        placeholder="Enter your email address"
+                        required=""
+                      />
+                      <button
+                        type="submit"
+                        class="btn btn-lg btn-primary my-2"
+                        class="btn btn-lg btn-primary"
+                        id="submit-email"
+                      >
+                        Enviar
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="digystar-logo">
+                    <a
+                    href="https://www.digystar.com"
+                    class="text-white"
+                  >
+                    <img class="header-icon" src="img/dDigystarSmall.png" /><span class="logo-text text-dark">IGYSTAR</span>
+                  </a>
+                </div>
+            </div>
           </div>
         </div>
-      </div>
     </main>
 
     <footer class="py-5" style="background: #f9f9f9">
@@ -199,16 +328,11 @@
           </div>
           <div class="col-lg-4">
             <p>
-              <strong>
-                Our Mission
-              </strong>
-            </p>
-          </div>
-          <div class="col-lg-4">
-            <p>
+              <a class="footer-menu-link" href="/team.html">
               <strong>
                 Our Team
               </strong>
+            </a>
             </p>
           </div>
         </div>
