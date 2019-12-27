@@ -160,11 +160,12 @@ h1.jumbotron-heading {
 
 #inputEmail {
   display: inline-block;
-  max-width: 190px;
+  max-width: 400px;
+  width: calc(100% - 100px);
   height: 45px;
   font-size: 14px;
   box-shadow: none;
-  border: solid 1px #d2d2d2;
+  border: solid 2px #653fbf;
   border-right: transparent;
 }
 
@@ -314,7 +315,7 @@ h1.jumbotron-heading {
 
 .btn-primary.btn:hover,
 .btn-primary:not(:disabled):not(.disabled):active {
-  background-color: #22c1c3;
+  background-color: #653fbf;
   border-color: #ffffff;
 }
 .header-icon {
