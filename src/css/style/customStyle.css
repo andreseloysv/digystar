@@ -646,6 +646,10 @@ End Arrow Icon
   .feature-title-text{
     max-width: 80%;
   }
+
+  #faq .feature-title-text{
+    max-width: 100%;
+  }
   
   .feature-text{
     max-width: 80%;
