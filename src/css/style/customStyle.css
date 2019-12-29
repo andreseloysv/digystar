@@ -610,6 +610,8 @@ End Arrow Icon
   }
   .navbar-link-container{
     display: block;
+    width: 240px;
+    text-align: center;
   }
   .row-container{
     padding: 0;
