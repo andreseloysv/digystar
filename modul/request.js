@@ -7,10 +7,25 @@ async function queryGetRequestInfo(client) {
   return result.rows;
 }
 
+async function queryGetRegisteredUsers(client) {
+  const query = `SELECT count(id) FROM "user".user;`;
+  const result = await client.query(query);
+  console.log('query number of registered users', query);
+  return result.rows;
+}
+
 async function getRequestInfo() {
   const client = databaseConnection.getDBClient();
   client.connect();
   const requestInfo = await queryGetRequestInfo(client);
+  client.end();
+  return JSON.stringify(requestInfo);
+}
+
+async function getRegisteredUsers() {
+  const client = databaseConnection.getDBClient();
+  client.connect();
+  const requestInfo = await queryGetRegisteredUsers(client);
   client.end();
   return JSON.stringify(requestInfo);
 }
@@ -105,6 +120,7 @@ async function saveRequestInfo(
   client.end();
 }
 module.exports = {
+  getRegisteredUsers,
   getRequestInfo,
   saveUserEmail,
   saveRequestInfo

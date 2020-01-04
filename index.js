@@ -105,8 +105,9 @@ const server = http.createServer(async (request, response) => {
   } else if (url === '/stadistics' && request.method === 'POST') {
     auth.connect(basic)(request, response, async function() {
       response.writeHead(200, { 'Content-Type': 'application/json' });
-      const info = await RequestModul.getRequestInfo();
-      response.write(info);
+      const infoRequest = await RequestModul.getRequestInfo();
+      const infoRegisteredUsers = await RequestModul.getRegisteredUsers();
+      response.write(JSON.stringify({ request: infoRequest, registeredUsers: infoRegisteredUsers }));
       response.end();
     });
     return; // not save the request
